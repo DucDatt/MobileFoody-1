@@ -20,6 +20,7 @@ import DetailsProfile from '../views/Customer/DetailsProfile';
 import LikeScreen from '../views/Customer/LikeScreen';
 import Introduce from '../views/Customer/Introduce';
 import Register from '../views/Customer/Register';
+import ShoppingCart from '../views/Customer/ShoppingCart';
 
 const navOptionHandler = () => ({
     headerShown: false
@@ -75,10 +76,10 @@ function HomeTab(){
                     </View>
                 )
             }} />
-            <Tab.Screen name="Category" component={Category} options={{
+            <Tab.Screen name="ShoppingCart" component={ShoppingCart} options={{
                  tabBarIcon:({focused})=>(
                      <View style={styles.iconView}>
-                         <Ionicons  name='list' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000'}} />     
+                         <Ionicons  name='cart-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000'}} />     
                     </View>
                  )
             }}/>
