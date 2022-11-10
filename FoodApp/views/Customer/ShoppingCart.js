@@ -36,7 +36,7 @@ const ShoppingCart = ({
                         <Text style={{fontWeight: 'bold', color: 'white'}}>{item.name}</Text>
                         {/* size + price */}
                         <View style={{flexDirection: 'row'}}>
-                            <Text style={{color: 'white', marginRight: 15,}}>{item.size} </Text>
+                            <Text style={{color: 'white', marginRight: 15,}}>size: {item.size} </Text>
                             <Text style={{color: 'white', fontWeight: 'bold'}}>{item.price} VNĐ</Text>
                         </View>
                         {/* description */}
@@ -89,7 +89,6 @@ const ShoppingCart = ({
                 {/* body */}
                 
             <View style={styles.body}>
-                
                 <FlatList
                     data={items}
                     renderItem={itemComponent}
@@ -97,13 +96,12 @@ const ShoppingCart = ({
                 </FlatList> 
 
                 <View style={styles.paymentContainer}>
-                    <TouchableOpacity style={styles.btnPay}> 
+                    <TouchableOpacity style={styles.btnPay} onPress={() => {navigation.navigate('Payment')}}> 
                         <Text style={{color: 'black', fontWeight: 'bold'}}>THANH TOÁN</Text>
                     </TouchableOpacity>
                 </View>
             </View>
-
-                        {/* ------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------ */}
             
         </View>
 

@@ -10,8 +10,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import HomeCustomer from '../views/Customer/HomeCustomer'
 import Login from '../views/Customer/Login'
 import Category from '../views/Customer/Category';
-import CartScreen from '../views/Customer/CartScreen'
-
+import CartScreen from '../views/Customer/CartScreen';
+import Payment from '../views/Customer/payment';
 import NotifyScreen from '../views/Customer/NotifyScreen'
 import ChatScreen from '../views/Customer/ChatScreen'
 import Profile from '../views/Customer/Profile';
@@ -48,6 +48,7 @@ function HomeDrawer(){
         <Drawer.Screen name="Introduce" component={Introduce} optiosn={ {title:"Introduce",
             drawerIcon: ({size}) => <Ionicons name='introduce' color='#FFF' size={size}/> }}/>
         </Drawer.Navigator>
+        
     )
 }
 
@@ -115,6 +116,8 @@ export default function TagView(){
             <Stack.Screen name="DetailsProfile" component={DetailsProfile} options={navOptionHandler}/>
             <Stack.Screen name="LikeScreen" component={LikeScreen} options={navOptionHandler}/>
             <Stack.Screen name="Introduce" component={Introduce} options={navOptionHandler}/>
+            <Stack.Screen name="Payment" component={Payment} options={navOptionHandler}/>
+
         </Stack.Navigator>
     )
 }
