@@ -13,13 +13,22 @@ const DetailsProfile = ({navigation,}) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.detailProfile}>
+            <View style={styles.editSex}>
+                    <TouchableOpacity style={{flexDirection: 'row'}}>
+                        <Text style={styles.profile}>Họ và tên</Text>
+                        <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.chooseSex}>
+                        <TextInput placeholder='Nhập họ và tên' style={styles.inputText}/>
+                    </TouchableOpacity>
+                </View>
                 <View style={styles.editSex}>
                     <TouchableOpacity style={{flexDirection: 'row'}}>
                         <Text style={styles.profile}>Giới tính</Text>
                         <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Chọn giới tính' />
+                    <TextInput placeholder='Chọn giới tính' style={styles.inputText}/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.editSex}>
@@ -28,7 +37,7 @@ const DetailsProfile = ({navigation,}) => {
                         <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Chọn ngày tháng năm sinh' />
+                        <TextInput placeholder='Nhập ngày tháng năm sinh' style={styles.inputText}/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.editSex}>
@@ -37,7 +46,7 @@ const DetailsProfile = ({navigation,}) => {
                         <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Nhập số điện thoại của bạn' />
+                        <TextInput placeholder='Nhập số điện thoại của bạn' style={styles.inputText}/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.editSex}>
@@ -46,14 +55,14 @@ const DetailsProfile = ({navigation,}) => {
                         <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Chọn địa chỉ email của bạn' />
+                        <TextInput placeholder='Nhập địa chỉ email của bạn' style={styles.inputText}/>
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={styles.logout}>
+            <View style={styles.change}>
                 <TouchableOpacity style={{flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
-                    <Icon name='sign-out-alt' size={20} color={'red'} style={{marginStart:10}}/>
-                    <Text style={styles.signout}>Đăng xuất</Text>
+                    <Icon name='spinner' size={20} color={'red'} style={{marginStart:14}}/>
+                    <Text style={styles.changeprofile}>Thay đổi</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -91,18 +100,24 @@ const styles = StyleSheet.create({
     editSex: {
         flexDirection: 'column',
         paddingVertical: 10,
+        paddingTop: 10,
     },
     chooseSex: {
-        paddingVertical:5,
-        paddingStart: 10,
-        fontSize: 17,
+        width: '80%',
+        backgroundColor: 'gray'
     },
-    logout: {
+    inputText: {
+        paddingVertical: 5,
+        marginBottom: 10,
+        height: 40,
+        alignItems: 'center',
+    },
+    change: {
         backgroundColor: 'white',
         height: 45,
         marginTop: 10
     },
-    signout: {
+    changeprofile: {
         color: 'red',
         fontSize: 25,
         paddingStart: 10

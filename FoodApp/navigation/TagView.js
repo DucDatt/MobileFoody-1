@@ -39,7 +39,7 @@ function HomeDrawer(){
           drawerActiveBackgroundColor: '#6a0080'
         }}
         >
-        <Drawer.Screen name="HomeCustomer" component={HomeTab} optiosn={ {title:"Home",
+        <Drawer.Screen name="Home" component={HomeTab} optiosn={ {title:"Home",
             drawerIcon: ({size}) => <Ionicons name='home-outline' color='#FFF' size={size}/> }}/>  
         <Drawer.Screen name="Login" component={Login} optiosn={ {title:"Login",
             drawerIcon: ({size}) => <Ionicons name='introduce' color='#FFF' size={size}/> }}/>
