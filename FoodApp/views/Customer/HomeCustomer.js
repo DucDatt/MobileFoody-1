@@ -20,7 +20,7 @@ const HomeCustomer = ({ navigation }) => {
                     <View style={styles.topZone}>
                     <TouchableOpacity style={styles.avatar}>
                         <View style={styles.img}>
-                       <Ionicons name='apps-outline' 
+                       <Ionicons name='apps-outline'
                        color='#fff' 
                        size={19}
                        style={{justifyContent:'center',alignSelf:'center',paddingTop:5}}  />

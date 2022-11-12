@@ -1,15 +1,14 @@
 import React from 'react';
 import { Text, View ,StyleSheet} from 'react-native';
 
-const InstalledScreen = ({
-    params,
-}) => (
-    <View>
-        <Text>componentName</Text>
-    </View>
-);
-
-export default InstalledScreen;
+const NotifyScreen = ({ navigation, }) => {
+    return (
+        <View>
+            <Text>NotifyScreen</Text>
+        </View>
+    );
+}
+export default NotifyScreen;
 const styles = StyleSheet.create({
     
 });

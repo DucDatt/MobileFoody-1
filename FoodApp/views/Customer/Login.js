@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     bgContainer: {
         flex: 1,
         alignItems: 'center',
-
     },
     txtForgot : {
         marginTop: 20,

@@ -1,68 +1,52 @@
 import React from 'react';
-import { StyleSheet,Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const DetailsProfile = ({navigation,}) => {
-    return(
-        <View>
-            <View style={{flexDirection:'row',paddingVertical:10}}>
-                <Image  style={styles.imgProfile}  source={{uri:'https://media.vov.vn/sites/default/files/styles/large/public/2021-11/dbruyne.jpeg'}}/>
-                <TouchableOpacity style={{flexDirection:'row'}}>
-                    <Text style={styles.profilename}>Kevin</Text>
-                        <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
+const DetailsProfile = ({ navigation, }) => {
+    return (
+        <View style={styles.detailprofileContainer}>
+            <View style={styles.view}>
+                <Icon name='chevron-left' size={25} color={'white'} style={styles.icongoback} onPress={() => {navigation.goBack()}}/>
+                <Text style={styles.ttcn}>Thông tin cá nhân</Text>
+            </View>
+            <View>
+                <View style={styles.form}>
+                    <Text style={styles.text}>Họ và tên</Text>
+                    <View style={styles.hideInput}>
+                        <TextInput placeholder='Nhập họ và tên' style={styles.textInside} />
+                    </View>
+                </View>
+                <View style={styles.form}>
+                    <Text style={styles.text}>Giới tính</Text>
+                    <View style={styles.hideInput}>
+                        <TextInput placeholder='Nhập giới tính' style={styles.textInside} />
+                    </View>
+                </View>
+                <View style={styles.form}>
+                    <Text style={styles.text}>Ngày sinh</Text>
+                    <View style={styles.hideInput}>
+                        <TextInput placeholder='Nhập ngày sinh' style={styles.textInside} />
+                    </View>
+                </View>
+                <View style={styles.form}>
+                    <Text style={styles.text}>Số điện thoại</Text>
+                    <View style={styles.hideInput}>
+                        <TextInput placeholder='Nhập số điện thoại' style={styles.textInside} />
+                    </View>
+                </View>
+                <View style={styles.form}>
+                    <Text style={styles.text}>Email</Text>
+                    <View style={styles.hideInput}>
+                        <TextInput placeholder='Nhập Email' style={styles.textInside} />
+                    </View>
+                </View>
+            </View>
+            <View style={{ flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', width: '80%', }}>
+                <TouchableOpacity style={styles.btnChange}>
+                    <Text style={styles.textBtn}>Thay đổi</Text>
                 </TouchableOpacity>
-            </View>
-            <View style={styles.detailProfile}>
-            <View style={styles.editSex}>
-                    <TouchableOpacity style={{flexDirection: 'row'}}>
-                        <Text style={styles.profile}>Họ và tên</Text>
-                        <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Nhập họ và tên' style={styles.inputText}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.editSex}>
-                    <TouchableOpacity style={{flexDirection: 'row'}}>
-                        <Text style={styles.profile}>Giới tính</Text>
-                        <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.chooseSex}>
-                    <TextInput placeholder='Chọn giới tính' style={styles.inputText}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.editSex}>
-                    <TouchableOpacity style={{flexDirection: 'row'}}>
-                        <Text style={styles.profile}>Năm sinh</Text>
-                        <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Nhập ngày tháng năm sinh' style={styles.inputText}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.editSex}>
-                    <TouchableOpacity style={{flexDirection: 'row'}}>
-                        <Text style={styles.profile}>Số điện thoại</Text>
-                        <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Nhập số điện thoại của bạn' style={styles.inputText}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.editSex}>
-                    <TouchableOpacity style={{flexDirection: 'row'}}>
-                        <Text style={styles.profile}>Email</Text>
-                        <Icon name='pen' size={14} color={'gray'} style={{paddingStart: 10,paddingTop:14}}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.chooseSex}>
-                        <TextInput placeholder='Nhập địa chỉ email của bạn' style={styles.inputText}/>
-                    </TouchableOpacity>
-                </View>
-            </View>
-            <View style={styles.change}>
-                <TouchableOpacity style={{flexDirection:'row',alignItems: 'center',justifyContent: 'center'}}>
-                    <Icon name='spinner' size={20} color={'red'} style={{marginStart:14}}/>
-                    <Text style={styles.changeprofile}>Thay đổi</Text>
+                <TouchableOpacity style={styles.btnExit}>
+                    <Text style={styles.textBtn}>Hủy</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -72,54 +56,79 @@ const DetailsProfile = ({navigation,}) => {
 export default DetailsProfile;
 
 const styles = StyleSheet.create({
-    imgProfile:{
-        width:80,
-        height:80,
-        borderRadius:80/2,
-        marginStart: 10,
-        marginTop: 10
-    },
-    profilename: {
-        color: 'black',
-        fontSize : 25,
-        paddingStart: 10,
-        paddingTop: 3,
-        fontWeight:'bold',
-    },
-    profile: {
-        color: 'black',
-        fontSize : 25,
-        paddingStart: 10,
-        paddingTop: 3,
-    },
-    detailProfile: {
+    detailprofileContainer: {
         flex: 1,
-        backgroundColor: 'white',
-        flexDirection: 'column',
     },
-    editSex: {
-        flexDirection: 'column',
-        paddingVertical: 10,
-        paddingTop: 10,
+    view: {
+        height: 70,
+        backgroundColor: 'red',
+        flexDirection: 'row',
     },
-    chooseSex: {
-        width: '80%',
-        backgroundColor: 'gray'
+    icongoback: {
+        paddingStart: 25,
+        alignSelf: 'center',
+        justifyContent: 'center'
     },
-    inputText: {
-        paddingVertical: 5,
-        marginBottom: 10,
-        height: 40,
-        alignItems: 'center',
-    },
-    change: {
-        backgroundColor: 'white',
-        height: 45,
-        marginTop: 10
-    },
-    changeprofile: {
-        color: 'red',
+    ttcn: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        lineHeight: 55,
+        color: 'white',
         fontSize: 25,
-        paddingStart: 10
-    }
+        marginLeft: 50
+    },
+    form: {
+        width: '100%',
+        height: 'auto',
+        paddingTop: 20,
+        justifyContent: 'center',
+        marginBottom: 10
+    },
+    text: {
+        width: '80%',
+        fontSize: 20,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+    },
+    hideInput: {
+        width: '80%',
+        height: '45%',
+        borderWidth: 1,
+        borderRadius: 30,
+        alignSelf: 'center',
+        marginTop: 10,
+    },
+    textInside: {
+        marginLeft: 20,
+        marginTop: 10,
+        marginRight: 10,
+        marginBottom: 10,
+        fontSize: 14
+    },
+    btnChange: {
+        width: '50%',
+        height: 50,
+        borderWidth: 1,
+        borderRadius: 20,
+        alignSelf: 'center',
+        marginTop: 5,
+        backgroundColor: '#FF7867',
+        marginRight: 10
+    },
+    btnExit: {
+        width: '50%',
+        height: 50,
+        borderWidth: 1,
+        borderRadius: 20,
+        alignSelf: 'center',
+        marginTop: 10,
+        backgroundColor: '#FF7867',
+    },
+    textBtn: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 12,
+    },
 });

@@ -36,7 +36,7 @@ const Profile = ({navigation,}) => {
                     <View style={{flex:1}} />
                         <Icon name='chevron-right' size={20} color={'black'} style={{paddingEnd: 10,opacity:0.5}}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('LikeScreen')}}>
+                <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('Payment')}}>
                     <Icon name='dollar-sign' size={20} color={'black'} style={{marginStart:10,paddingTop: 3}}/>
                     <Text style={styles.signout}>Thanh toán</Text>
                     <View style={{flex:1}} />
@@ -48,13 +48,13 @@ const Profile = ({navigation,}) => {
                     <View style={{flex:1}} />
                         <Icon name='chevron-right' size={20} color={'black'} style={{paddingEnd: 10,opacity:0.5}}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('LikeScreen')}}>
+                <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('ShoppingCart')}}>
                     <Icon name='history' size={20} color={'black'} style={{marginStart:10,paddingTop: 3}}/>
                     <Text style={styles.signout}>Lịch sử</Text>
                     <View style={{flex:1}} />
                         <Icon name='chevron-right' size={20} color={'black'} style={{paddingEnd: 10,opacity:0.5}}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('LikeScreen')}}>
+                <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}}>
                     <Icon name='sign-out-alt' size={20} color={'black'} style={{marginStart:10,paddingTop: 3}}/>
                     <Text style={styles.signout}>Đăng xuất</Text>
                     <View style={{flex:1}} />
