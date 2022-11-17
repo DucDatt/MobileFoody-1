@@ -1,7 +1,5 @@
-import React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
-import  IonIcons  from 'react-native-vector-icons/IonIcons';
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Login = ({
     navigation,
@@ -15,7 +13,7 @@ const Login = ({
 
             >
                 <View style={styles.logoLogin}>
-                    <IonIcons name='person' color='#FFF' size={36}/>
+                    <Ionicons name='person' color='#FFF' size={36}/>
                 </View>
                 <Text style={styles.signinText}>    
                     Sign In
@@ -27,7 +25,7 @@ const Login = ({
                     <View style={styles.inputContainer}>
                         <TextInput placeholder='   Mật khẩu' style={styles.inputText}/>
                     </View>
-                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("HomeCustomer")}>
+                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Home")}>
                         <Text style={styles.btnTxt} >Đăng nhập</Text>
                     </TouchableOpacity>
                     <TouchableOpacity >

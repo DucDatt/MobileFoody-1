@@ -11,7 +11,7 @@ import HomeCustomer from '../views/Customer/HomeCustomer'
 import Login from '../views/Customer/Login'
 import Category from '../views/Customer/Category';
 import CartScreen from '../views/Customer/CartScreen';
-import Payment from '../views/Customer/payment';
+import Payment from '../views/Customer/Payment';
 import NotifyScreen from '../views/Customer/NotifyScreen'
 import ChatScreen from '../views/Customer/ChatScreen'
 import Profile from '../views/Customer/Profile';
@@ -40,23 +40,22 @@ function HomeDrawer() {
             }}
         >
             <Drawer.Screen name="Home" component={HomeTab} optiosn={{
-                title: "Home",
+                title: "Trang chủ",
                 drawerIcon: ({ size }) => <Ionicons name='home-outline' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Login" component={Login} optiosn={{
-                title: "Login",
+                title: "Đăng nhập",
                 drawerIcon: ({ size }) => <Ionicons name='introduce' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Register" component={Register} optiosn={{
-                title: "Register",
+                title: "Đăng ký",
                 drawerIcon: ({ size }) => <Ionicons name='introduce' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Introduce" component={Introduce} optiosn={{
-                title: "Introduce",
+                title: "Giới thiệu",
                 drawerIcon: ({ size }) => <Ionicons name='introduce' color='#FFF' size={size} />
             }} />
         </Drawer.Navigator>
-
     )
 }
 

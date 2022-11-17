@@ -8,7 +8,9 @@ const Payment = ({ navigation, }) => {
     return (
         <View style={styles.paymentContainer}>
             <View style={styles.view}>
-                <Icon name='chevron-left' size={25} color={'white'} style={styles.icongoback} onPress={() => { navigation.goBack() }} />
+                <TouchableOpacity style={styles.btnBack} onPress={() => { navigation.goBack() }}>
+                    <Icon name='chevron-left' size={25} color='#fff' style={{ alignSelf: 'center' }} />
+                </TouchableOpacity>
                 <Text style={styles.ttcn}>Thanh toán</Text>
             </View>
             <View>
@@ -57,10 +59,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         flexDirection: 'row',
     },
-    icongoback: {
-        paddingStart: 25,
+    btnBack: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
         alignSelf: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginLeft: 20,
+        backgroundColor: '#607d8b',
+        opacity: 0.8
     },
     ttcn: {
         alignSelf: 'center',

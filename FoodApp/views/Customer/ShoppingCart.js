@@ -1,6 +1,5 @@
-import React from 'react';
-import {  Text, View, StyleSheet, ImageBackground, Modal, Pressable, Image, FlatList } from 'react-native';
-import  IonIcons  from 'react-native-vector-icons/IonIcons';
+import {  Text, View, StyleSheet, Image, FlatList } from 'react-native';
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -44,19 +43,19 @@ const ShoppingCart = ({
                         {/* add + minus item */}
                         <View style={styles.addAndMinus}>
                             <TouchableOpacity style={styles.btnMinus}>
-                                <IonIcons name='remove-circle-outline' color={'black'} size={24} />
+                                <Ionicons name='remove-circle-outline' color={'black'} size={24} />
                             </TouchableOpacity>
                             <View style={{justifyContent: 'center', alignItems: 'center', width: '33.3%'}}>
                                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>{item.quantity}</Text>
                             </View>
                             <TouchableOpacity style={styles.btnAdd}>
-                                <IonIcons name='add-circle-outline' color={'black'} size={24} />
+                                <Ionicons name='add-circle-outline' color={'black'} size={24} />
                             </TouchableOpacity>
                         </View>
                     </View>
                     {/* icon delete */}
                     <TouchableOpacity style={styles.iconDelete}>
-                        <IonIcons name='trash-outline' color={'black'} size={24} />
+                        <Ionicons name='trash-outline' color={'black'} size={24} />
                     </TouchableOpacity>
             </LinearGradient>
         )
@@ -84,8 +83,6 @@ const ShoppingCart = ({
                     </LinearGradient>
                 </View>
                 
-                    
-                
                 {/* body */}
                 
             <View style={styles.body}>
@@ -108,10 +105,6 @@ const ShoppingCart = ({
     )
 }
     
-    
-    
-    
-
 export default ShoppingCart;
 
 const styles = StyleSheet.create({

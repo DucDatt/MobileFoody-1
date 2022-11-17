@@ -6,7 +6,9 @@ const DetailsProfile = ({ navigation, }) => {
     return (
         <View style={styles.detailprofileContainer}>
             <View style={styles.view}>
-                <Icon name='chevron-left' size={25} color={'white'} style={styles.icongoback} onPress={() => {navigation.goBack()}}/>
+                <TouchableOpacity style={styles.btnBack} onPress={() => { navigation.goBack() }}>
+                    <Icon name='chevron-left' size={25} color='#fff' style={{alignSelf:'center'}}/>
+                </TouchableOpacity>
                 <Text style={styles.ttcn}>Thông tin cá nhân</Text>
             </View>
             <View>
@@ -40,15 +42,16 @@ const DetailsProfile = ({ navigation, }) => {
                         <TextInput placeholder='Nhập Email' style={styles.textInside} />
                     </View>
                 </View>
+                <View style={styles.btn}>
+                    <TouchableOpacity style={styles.btnChange}>
+                        <Text style={styles.textBtn}>Thay đổi</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btnExit}>
+                        <Text style={styles.textBtn}>Hủy</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={{ flexDirection: 'row', marginLeft: 'auto', marginRight: 'auto', width: '80%', }}>
-                <TouchableOpacity style={styles.btnChange}>
-                    <Text style={styles.textBtn}>Thay đổi</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnExit}>
-                    <Text style={styles.textBtn}>Hủy</Text>
-                </TouchableOpacity>
-            </View>
+
         </View>
     );
 }
@@ -60,14 +63,19 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     view: {
-        height: 70,
+        height: 100,
         backgroundColor: 'red',
         flexDirection: 'row',
     },
-    icongoback: {
-        paddingStart: 25,
+    btnBack: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
         alignSelf: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginLeft: 20,
+        backgroundColor: '#607d8b',
+        opacity: 0.8
     },
     ttcn: {
         alignSelf: 'center',
@@ -81,22 +89,26 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         paddingTop: 20,
-        justifyContent: 'center',
         marginBottom: 10
     },
     text: {
-        width: '80%',
         fontSize: 20,
         fontWeight: 'bold',
-        alignSelf: 'center',
+        marginLeft: 55,
     },
     hideInput: {
         width: '80%',
-        height: '45%',
+        height: '50%',
         borderWidth: 1,
         borderRadius: 30,
         alignSelf: 'center',
-        marginTop: 10,
+        marginTop: 5,
+    },
+    btn: {
+        flexDirection: 'row',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '80%'
     },
     textInside: {
         marginLeft: 20,

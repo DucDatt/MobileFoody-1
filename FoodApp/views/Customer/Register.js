@@ -1,7 +1,5 @@
-import React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
-import  IonIcons  from 'react-native-vector-icons/IonIcons';
-
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Register = ({
     navigation,
@@ -15,7 +13,7 @@ const Register = ({
 
             >
                 <View style={styles.logoLogin}>
-                    <IonIcons name='person' color='#FFF' size={36}/>
+                    <Ionicons name='person' color='#FFF' size={36}/>
                 </View>
                 <Text style={styles.signinText}>    
                     Đăng ký
