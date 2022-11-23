@@ -16,11 +16,7 @@ const items = [
     
 ]
 
-const ShoppingCart = ({
-    navigation,
-}) => { 
-
-    
+const ShoppingCart = ({navigation,}) => { 
     const itemComponent=({item}) => {
         return (
             <LinearGradient style={styles.item} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#FF7867', '#FFDD67']} >

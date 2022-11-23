@@ -25,31 +25,31 @@ const Profile = ({navigation,}) => {
                     <Text style={styles.profilename}>Kevin</Text>
                     <TouchableOpacity style={{flexDirection:'row',flex:1}} onPress={() => {navigation.navigate('DetailsProfile')}}>
                         <Text style={styles.profile}>Thông tin cá nhân</Text>
-                        <Icon name='chevron-right' size={14} color={'black'} style={{paddingStart: 10,paddingTop:21}}/>
+                        <Icon name='chevron-right' size={14} color={'black'} style={{paddingStart: 10,paddingTop:17}}/>
                     </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.account}>
                 <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('LikeScreen')}}>
-                    <Icon name='heart' size={20} color={'black'} style={{marginStart:10,paddingTop: 3}}/>
+                    <Icon name='heart' size={20} color={'black'} style={{marginStart:10,paddingTop: 5}}/>
                     <Text style={styles.signout}>Yêu thích</Text>
                     <View style={{flex:1}} />
                         <Icon name='chevron-right' size={20} color={'black'} style={{paddingEnd: 10,opacity:0.5}}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('Payment')}}>
-                    <Icon name='dollar-sign' size={20} color={'black'} style={{marginStart:10,paddingTop: 3}}/>
+                    <Icon name='dollar-sign' size={20} color={'black'} style={{marginStart:10,paddingTop: 5}}/>
                     <Text style={styles.signout}>Thanh toán</Text>
                     <View style={{flex:1}} />
                         <Icon name='chevron-right' size={20} color={'black'} style={{paddingEnd: 10,opacity:0.5}}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('LikeScreen')}}>
-                    <Icon name='file-invoice-dollar' size={20} color={'black'} style={{marginStart:10,paddingTop: 3}}/>
+                    <Icon name='file-invoice-dollar' size={20} color={'black'} style={{marginStart:10,paddingTop: 5}}/>
                     <Text style={styles.signout}>Hóa đơn</Text>
                     <View style={{flex:1}} />
                         <Icon name='chevron-right' size={20} color={'black'} style={{paddingEnd: 10,opacity:0.5}}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={{flexDirection:'row',paddingVertical:10}} onPress={() => {navigation.navigate('ShoppingCart')}}>
-                    <Icon name='history' size={20} color={'black'} style={{marginStart:10,paddingTop: 3}}/>
+                    <Icon name='history' size={20} color={'black'} style={{marginStart:10,paddingTop: 5}}/>
                     <Text style={styles.signout}>Lịch sử</Text>
                     <View style={{flex:1}} />
                         <Icon name='chevron-right' size={20} color={'black'} style={{paddingEnd: 10,opacity:0.5}}/>
@@ -84,14 +84,14 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize : 25,
         paddingStart: 21,
-        paddingTop: 17,
+        paddingTop: 7,
         fontWeight:'bold',
     },
     profile: {
         color: '#7bff3e',
         fontSize : 20,
         paddingStart: 21,
-        paddingTop: 14,
+        paddingTop: 5,
     },
     imgProfile:{
         width:80,

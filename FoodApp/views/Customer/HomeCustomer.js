@@ -16,28 +16,28 @@ const HomeCustomer = ({ navigation }) => {
         return (
             <View>
                 <LinearGradient style={styles.linearGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#FF7867', '#FFDD67']} >
-                <View style={styles.topContent}>
-                    <View style={styles.topZone}>
-                    <TouchableOpacity style={styles.avatar}>
-                        <View style={styles.img}>
-                       <Ionicons name='apps-outline'
-                       color='#fff' 
-                       size={19}
-                       style={{justifyContent:'center',alignSelf:'center',paddingTop:5}}  />
-                       </View>
-                    </TouchableOpacity>
-                    <Text style={{fontWeight:'500'}}>Home</Text>
-                    <TouchableOpacity style={styles.avatar}>
-                        <Image source={{ uri: 'https://media.vov.vn/sites/default/files/styles/large/public/2021-11/dbruyne.jpeg' }} style={styles.img} />
-                    </TouchableOpacity>
-                   
+                    <View style={styles.topContent}>
+                        <View style={styles.topZone}>
+                            <TouchableOpacity style={styles.avatar} onPress={() => { navigation.openDrawer() }}>
+                                <View style={styles.img}>
+                                    <Ionicons name='apps-outline'
+                                        color='#fff'
+                                        size={19}
+                                        style={{ justifyContent: 'center', alignSelf: 'center', paddingTop: 5 }} />
+                                </View>
+                            </TouchableOpacity>
+                            <Text style={{ fontWeight: '500', fontSize: 20 }}>Home</Text>
+                            <TouchableOpacity style={styles.avatar}>
+                                <Image source={{ uri: 'https://media.vov.vn/sites/default/files/styles/large/public/2021-11/dbruyne.jpeg' }} style={styles.img} />
+                            </TouchableOpacity>
+
+                        </View>
+                        <Text style={styles.subTitle}>
+                            Bạn đang đói? Chọn món và order thôi.
+                        </Text>
+                        <TextInput style={styles.searchBar} placeholder='Tìm kiếm' placeholderTextColor='#cfcfcf' >
+                        </TextInput>
                     </View>
-                    <Text style={styles.subTitle}>
-                        Bạn đang đói? Chọn món và order thôi.
-                    </Text>
-                    <TextInput style={styles.searchBar} placeholder='Tìm kiếm' placeholderTextColor='#cfcfcf' >
-                    </TextInput>
-                </View>
                 </LinearGradient>
                 <Text style={{ textTransform: 'uppercase', fontWeight: '500', fontSize: 20, marginLeft: 25, textAlign: 'center' }}>menu</Text>
             </View>
@@ -46,7 +46,7 @@ const HomeCustomer = ({ navigation }) => {
     const MainComponent = ({ item }) => {
         return (
             <View style={styles.mainContent}>
-                <TouchableOpacity key={item.id} style={styles.mainContainer}  onPress={() => {navigation.navigate('Food',{productId:item.id,productImg:item.img,productName:item.name})}}>
+                <TouchableOpacity key={item.id} style={styles.mainContainer} onPress={() => { navigation.navigate('Food', { productId: item.id, productImg: item.img, productName: item.name }) }}>
                     <Image source={{ uri: item.img }} style={styles.thumbnail} />
                     <View style={styles.gametxt}>
                         <Text style={styles.cateTitle}>{item.name} </Text>
@@ -75,61 +75,61 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 'auto',
         width: '100%',
-        borderRadius:40
+        borderRadius: 40
     },
-    linearGradient:{
-        width:'90%',
-        height:300,
-        alignItems:'center',
-        alignSelf:'center',
-        borderRadius:40,
-        marginBottom:10,
-        marginTop:20
+    linearGradient: {
+        width: '90%',
+        height: 'auto',
+        alignItems: 'center',
+        alignSelf: 'center',
+        borderRadius: 40,
+        marginBottom: 10,
+        marginTop: 20
     },
     topContent: {
         paddingTop: 10,
         width: '100%',
-        alignItems:'center',
+        alignItems: 'center',
         marginBottom: 15
     },
-    topZone:{
-        flexDirection:'row',
-        alignSelf:'center',
-        justifyContent:'space-between',
-        width:'80%',
-        paddingTop:10
+    topZone: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+        justifyContent: 'space-between',
+        width: '80%',
+        paddingTop: 10
     },
     avatar: {
         width: 36,
         height: 36,
-        borderRadius: 36/2,
-        justifyContent:'center',
-        alignItems:'center'
+        borderRadius: 36 / 2,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     img: {
         width: '100%',
         height: '100%',
-        borderRadius: 35/2,
-        backgroundColor:'#17171C',
+        borderRadius: 35 / 2,
+        backgroundColor: '#17171C',
     },
-    subTitle:{
-        marginTop:'15%',
-        flexWrap:'wrap',
-        fontSize:25,
-        fontWeight:'bold',
-        paddingHorizontal:10
+    subTitle: {
+        marginTop: '5%',
+        flexWrap: 'wrap',
+        fontSize: 25,
+        fontWeight: 'bold',
+        paddingHorizontal: 10
     },
     searchBar: {
         justifyContent: 'center',
         borderRadius: 20,
-        marginTop:30,
+        marginTop: 30,
         width: '90%',
-        height:40,
+        height: 40,
         fontSize: 18,
         backgroundColor: '#fff',
         opacity: 0.6,
         color: '#000',
-        paddingLeft:15
+        paddingLeft: 15
     },
     tagContent: {
         flex: 1,
@@ -150,15 +150,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        marginVertical:20,
+        marginVertical: 20,
         marginBottom: 70
     },
     mainContainer: {
         width: '90%',
         backgroundColor: '#fff',
         borderRadius: 15,
-        borderBottomLeftRadius:0,
-        borderBottomRightRadius:0,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
         shadowOffset: {
             width: 0,
             height: 10,
@@ -172,8 +172,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 200,
         borderRadius: 15,
-        borderBottomLeftRadius:0,
-        borderBottomRightRadius:0,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
     },
     gametxt: {
         flexDirection: 'column',

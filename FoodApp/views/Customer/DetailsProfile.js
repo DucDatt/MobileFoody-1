@@ -1,56 +1,76 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const DetailsProfile = ({ navigation, }) => {
+    const [email, onChangeEmail] = useState('');
+    const [number, onChangeNumber] = useState("");
+
     return (
         <View style={styles.detailprofileContainer}>
             <View style={styles.view}>
                 <TouchableOpacity style={styles.btnBack} onPress={() => { navigation.goBack() }}>
-                    <Icon name='chevron-left' size={25} color='#fff' style={{alignSelf:'center'}}/>
+                    <Icon name='chevron-left' size={25} color='#fff' style={{ alignSelf: 'center' }} />
                 </TouchableOpacity>
                 <Text style={styles.ttcn}>Thông tin cá nhân</Text>
             </View>
-            <View>
-                <View style={styles.form}>
+            <ScrollView>
+                <View style={styles.item}>
                     <Text style={styles.text}>Họ và tên</Text>
                     <View style={styles.hideInput}>
-                        <TextInput placeholder='Nhập họ và tên' style={styles.textInside} />
+                        <TextInput style={styles.textInside} placeholder='Nhập họ và tên' />
                     </View>
                 </View>
-                <View style={styles.form}>
-                    <Text style={styles.text}>Giới tính</Text>
-                    <View style={styles.hideInput}>
-                        <TextInput placeholder='Nhập giới tính' style={styles.textInside} />
-                    </View>
-                </View>
-                <View style={styles.form}>
+                <View style={styles.item}>
                     <Text style={styles.text}>Ngày sinh</Text>
                     <View style={styles.hideInput}>
-                        <TextInput placeholder='Nhập ngày sinh' style={styles.textInside} />
+                        <TextInput style={styles.textInside} placeholder='Nhập ngày sinh' />
                     </View>
                 </View>
-                <View style={styles.form}>
+                <View style={styles.item}>
+                    <Text style={styles.text}>Giới tính</Text>
+                    <View style={styles.hideInput}>
+                        <TextInput style={styles.textInside} placeholder='Nhập giới tính'/>
+                    </View>
+                </View>
+                <View style={styles.item}>
                     <Text style={styles.text}>Số điện thoại</Text>
                     <View style={styles.hideInput}>
-                        <TextInput placeholder='Nhập số điện thoại' style={styles.textInside} />
+                        <TextInput style={styles.textInside} placeholder='Nhập số điện thoại'
+                            onChangeText={(text) => {
+                                onChangeNumber(text);
+                            }}
+                            value={number}
+                            keyboardType='numeric'
+                        />
                     </View>
                 </View>
-                <View style={styles.form}>
+                <View style={styles.item}>
+                    <Text style={styles.text}>Địa chỉ</Text>
+                    <View style={styles.hideInput}>
+                        <TextInput style={styles.textInside} placeholder='Nhập địa chỉ' />
+                    </View>
+                </View>
+                <View style={styles.item}>
                     <Text style={styles.text}>Email</Text>
                     <View style={styles.hideInput}>
-                        <TextInput placeholder='Nhập Email' style={styles.textInside} />
+                        <TextInput style={styles.textInside} placeholder='Nhập Email'
+                            onChangeText={(text) => {
+                                onChangeEmail(text);
+                            }}
+                            value={email}
+                        />
                     </View>
                 </View>
-                <View style={styles.btn}>
-                    <TouchableOpacity style={styles.btnChange}>
-                        <Text style={styles.textBtn}>Thay đổi</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnExit}>
-                        <Text style={styles.textBtn}>Hủy</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+
+                <TouchableOpacity style={styles.btnchange}>
+                    <Text style={styles.textBtn}>Thay đổi</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btnexit}>
+                    <Text style={styles.textBtn}>Hủy</Text>
+                </TouchableOpacity>
+            </ScrollView>
 
         </View>
     );
@@ -63,7 +83,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     view: {
-        height: 100,
+        height: 70,
         backgroundColor: 'red',
         flexDirection: 'row',
     },
@@ -73,7 +93,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         alignSelf: 'center',
         justifyContent: 'center',
-        marginLeft: 20,
+        marginLeft: 10,
         backgroundColor: '#607d8b',
         opacity: 0.8
     },
@@ -83,55 +103,48 @@ const styles = StyleSheet.create({
         lineHeight: 55,
         color: 'white',
         fontSize: 25,
-        marginLeft: 50
+        marginLeft: 10
     },
-    form: {
+    item: {
         width: '100%',
-        height: 'auto',
-        paddingTop: 20,
-        marginBottom: 10
+        height: 100,
+        justifyContent: 'center',
     },
     text: {
-        fontSize: 20,
+        width: '80%',
+        fontSize: 16,
         fontWeight: 'bold',
-        marginLeft: 55,
+        alignSelf: 'center',
+
     },
     hideInput: {
         width: '80%',
-        height: '50%',
+        height: '45%',
         borderWidth: 1,
         borderRadius: 30,
         alignSelf: 'center',
-        marginTop: 5,
-    },
-    btn: {
-        flexDirection: 'row',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        width: '80%'
+        marginTop: 10,
     },
     textInside: {
         marginLeft: 20,
         marginTop: 10,
         marginRight: 10,
         marginBottom: 10,
-        fontSize: 14
     },
-    btnChange: {
-        width: '50%',
+    btnchange: {
+        width: '80%',
         height: 50,
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 50 / 2,
         alignSelf: 'center',
-        marginTop: 5,
+        marginTop: 10,
         backgroundColor: '#FF7867',
-        marginRight: 10
     },
-    btnExit: {
-        width: '50%',
+    btnexit: {
+        width: '80%',
         height: 50,
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 50 / 2,
         alignSelf: 'center',
         marginTop: 10,
         backgroundColor: '#FF7867',
