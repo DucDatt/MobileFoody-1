@@ -5,9 +5,6 @@ export const UPDATE_CATEGORY ='UPDATE_CATEGORY'
 export const DELETE_CATEGORY ='DELETE_CATEGORY'
 export const SEARCH_CATEGORY ='SEARCH_CATEGORY'
 
-
-
-
 export const getAllCATEGORY=(cate)=>{
     return{
         type:GETALL_CATEGORY,

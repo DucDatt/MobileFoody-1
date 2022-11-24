@@ -41,8 +41,8 @@ app.get("/api/:keyword", async(req,res)=>{
             ));
             let key = req.params.keyword
             const newData = data.filter((item) => {
-                const itemData = item.name
-                    ? item.name.toLowerCase()
+                const itemData = item.TenDM
+                    ? item.TenDM.toLowerCase()
                     : ''.toLowerCase();
                 const textData = key.toLowerCase();
                 return itemData.indexOf(textData) > -1;

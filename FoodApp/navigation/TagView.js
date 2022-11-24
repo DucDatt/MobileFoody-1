@@ -21,6 +21,10 @@ import LikeScreen from '../views/Customer/LikeScreen';
 import Introduce from '../views/Customer/Introduce';
 import Register from '../views/Customer/Register';
 import ShoppingCart from '../views/Customer/ShoppingCart';
+import HomeAdmin from '../views/Admin/HomeAdmin';
+import HomeCategory from '../views/Admin/Category/HomeCategory';
+import AddCate from '../views/Admin/Category/AddCate';
+import EditCate from '../views/Admin/Category/EditCate';
 
 const navOptionHandler = () => ({
     headerShown: false
@@ -124,6 +128,9 @@ export default function TagView() {
             <Stack.Screen name="LikeScreen" component={LikeScreen} options={navOptionHandler} />
             <Stack.Screen name="Introduce" component={Introduce} options={navOptionHandler} />
             <Stack.Screen name="Payment" component={Payment} options={navOptionHandler} />
+            <Stack.Screen name="HomeCategory" component={HomeCategory} options={navOptionHandler} />
+            <Stack.Screen name="AddCate" component={AddCate} options={navOptionHandler} />
+            <Stack.Screen name="EditCate" component={EditCate} options={navOptionHandler} />
         </Stack.Navigator>
     )
 }
