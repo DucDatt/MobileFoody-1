@@ -53,11 +53,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   img: {
-    height: 150
+    height: 150,
   },
   title: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginVertical: 50
   },
   subtitle: {
     fontSize: 30,
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 6,
   },
   header1: {
-    fontSize: 17,
+    fontSize: 20,
     textAlign: 'left',
     paddingLeft: 10,
     fontWeight: 'bold',

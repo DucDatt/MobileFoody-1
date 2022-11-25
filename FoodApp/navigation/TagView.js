@@ -7,21 +7,21 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import HomeCustomer from '../views/Customer/HomeCustomer'
-import Login from '../views/Customer/Login'
-import Category from '../views/Customer/Category';
-import CartScreen from '../views/Customer/CartScreen';
-import Payment from '../views/Customer/Payment';
-import NotifyScreen from '../views/Customer/NotifyScreen'
-import ChatScreen from '../views/Customer/ChatScreen'
-import Profile from '../views/Customer/Profile';
-import Food from '../views/Customer/Food'
-import DetailsProfile from '../views/Customer/DetailsProfile';
-import LikeScreen from '../views/Customer/LikeScreen';
+import HomeCustomer from '../views/Customer/HomeCustomer';
+import Login from '../views/Customer/Form/Login';
+import Register from '../views/Customer/Form/Register';
+import Category from '../views/Customer/FoodCustomer/Category';
+import CartScreen from '../views/Customer/FoodCustomer/CartScreen';
+import Payment from '../views/Customer/FoodCustomer/Payment';
+import NotifyScreen from '../views/Customer/Like/NotifyScreen'
+import ChatScreen from '../views/Customer/Like/ChatScreen'
+import Profile from '../views/Customer/Profile/Profile';
+import Food from '../views/Customer/FoodCustomer/Food'
+import DetailsProfile from '../views/Customer/Profile/DetailsProfile';
+import LikeScreen from '../views/Customer/Like/LikeScreen';
 import Introduce from '../views/Customer/Introduce';
-import Register from '../views/Customer/Register';
-import ShoppingCart from '../views/Customer/ShoppingCart';
-import HomeAdmin from '../views/Admin/HomeAdmin';
+import ShoppingCart from '../views/Customer/FoodCustomer/ShoppingCart';
+
 import HomeCategory from '../views/Admin/Category/HomeCategory';
 import AddCate from '../views/Admin/Category/AddCate';
 import EditCate from '../views/Admin/Category/EditCate';
@@ -43,21 +43,21 @@ function HomeDrawer() {
                 drawerActiveBackgroundColor: '#6a0080'
             }}
         >
-            <Drawer.Screen name="Home" component={HomeTab} optiosn={{
+            <Drawer.Screen name="Home" component={HomeTab} options={{
                 title: "Trang chủ",
                 drawerIcon: ({ size }) => <Ionicons name='home-outline' color='#FFF' size={size} />
             }} />
-            <Drawer.Screen name="Login" component={Login} optiosn={{
+            <Drawer.Screen name="Login" component={Login} options={{
                 title: "Đăng nhập",
-                drawerIcon: ({ size }) => <Ionicons name='introduce' color='#FFF' size={size} />
+                drawerIcon: ({ size }) => <Icon name='users' color='#FFF' size={size} />
             }} />
-            <Drawer.Screen name="Register" component={Register} optiosn={{
+            <Drawer.Screen name="Register" component={Register} options={{
                 title: "Đăng ký",
-                drawerIcon: ({ size }) => <Ionicons name='introduce' color='#FFF' size={size} />
+                drawerIcon: ({ size }) => <Icon name='address-card' color='#FFF' size={size} />
             }} />
-            <Drawer.Screen name="Introduce" component={Introduce} optiosn={{
+            <Drawer.Screen name="Introduce" component={Introduce} options={{
                 title: "Giới thiệu",
-                drawerIcon: ({ size }) => <Ionicons name='introduce' color='#FFF' size={size} />
+                drawerIcon: ({ size }) => <Icon name='info' color='#FFF' size={size} />
             }} />
         </Drawer.Navigator>
     )
@@ -113,7 +113,7 @@ function HomeTab() {
     )
 }
 
-export default function TagView() {
+function Customer() {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator>
@@ -128,9 +128,35 @@ export default function TagView() {
             <Stack.Screen name="LikeScreen" component={LikeScreen} options={navOptionHandler} />
             <Stack.Screen name="Introduce" component={Introduce} options={navOptionHandler} />
             <Stack.Screen name="Payment" component={Payment} options={navOptionHandler} />
+        </Stack.Navigator>
+    )
+}
+
+function Admin() {
+    const Stack = createNativeStackNavigator();
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="HomeCategory" component={AdminCategory} options={navOptionHandler} />
+        </Stack.Navigator>
+    )
+}
+
+function AdminCategory() {
+    const Stack = createNativeStackNavigator();
+    return (
+        <Stack.Navigator>
             <Stack.Screen name="HomeCategory" component={HomeCategory} options={navOptionHandler} />
             <Stack.Screen name="AddCate" component={AddCate} options={navOptionHandler} />
             <Stack.Screen name="EditCate" component={EditCate} options={navOptionHandler} />
+        </Stack.Navigator>
+    )
+}
+export default function TagView() {
+    const Stack = createNativeStackNavigator();
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Home" component={Customer} options={navOptionHandler} />
+            <Stack.Screen name="HomeCategory" component={Admin} options={navOptionHandler} />
         </Stack.Navigator>
     )
 }
