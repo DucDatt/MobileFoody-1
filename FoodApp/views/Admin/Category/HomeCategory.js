@@ -13,7 +13,12 @@ const HomeCategory = ({ navigation, }) => {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
     const handleSeachCate = (key) => {
-        dispatch(fetchSearchCATEGORY(key))
+        if (key.length > 0) {
+            dispatch(fetchSearchCATEGORY(key))
+        }
+        else {
+            dispatch(fetchAllCATEGORY())
+        }
     }
     useEffect(() => {
         dispatch(fetchAllCATEGORY())
@@ -38,10 +43,9 @@ const HomeCategory = ({ navigation, }) => {
                     navigation.navigate('EditCate',
                         {
                             cateId: item.MaDM, cateImg: item.HinhDM,
-                            cateName: item.TenDM, cateDocId:item.docId
+                            cateName: item.TenDM, cateDocId: item.docId
                         })
                 }} >
-
 
                 <View style={styles.Iteminfo}>
                     <Image source={{ uri: item.HinhDM }} style={styles.imgItem} />
@@ -55,34 +59,34 @@ const HomeCategory = ({ navigation, }) => {
     }
     return (
         <View style={styles.ListItemContainer}>
-        <ImageBackground style={styles.background} resizeMode='cover' source={{ uri: 'https://i.pinimg.com/originals/2e/e9/18/2ee918427712255bc116749e33616d33.png' }}>
+            <ImageBackground style={styles.background} resizeMode='cover' source={{ uri: 'https://i.pinimg.com/originals/2e/e9/18/2ee918427712255bc116749e33616d33.png' }}>
 
-            <View style={styles.leftHeader}>
-                <TextInput placeholder="Search" style={styles.inputText}
-                    onChangeText={(text) => setSearch(text)}
-                />
-                <TouchableOpacity
-                    onPress={() => handleSeachCate(search)}
+                <View style={styles.leftHeader}>
+                    <TextInput placeholder="Search" style={styles.inputText}
+                        onChangeText={(text) => setSearch(text)}
+                    />
+                    <TouchableOpacity
+                        onPress={() => handleSeachCate(search)}
+                    >
+                        <Text style={styles.search}>Tìm kiếm</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <FlatList
+
+                    numColumns={2}
+                    data={db.categories}
+                    ListHeaderComponent={HeaderComponent}
+                    renderItem={ItemComponent}
                 >
-                    <Text style={styles.search}>Tìm kiếm</Text>
+
+                </FlatList>
+                <TouchableOpacity style={styles.btnAdd} onPress={() => navigation.navigate('AddCate')}>
+                    <Text style={{ justifyContent: 'center', alignSelf: 'center', fontSize: 40 }}>+</Text>
                 </TouchableOpacity>
-            </View>
-
-            <FlatList
-
-                numColumns={2}
-                data={db.categories}
-                ListHeaderComponent={HeaderComponent}
-                renderItem={ItemComponent}
-            >
-
-            </FlatList>
-            <TouchableOpacity style={styles.btnAdd} onPress={() => navigation.navigate('AddCate')}>
-                <Text style={{ justifyContent: 'center', alignSelf: 'center', fontSize: 40 }}>+</Text>
-            </TouchableOpacity>
-        </ImageBackground>
-    </View>
-);
+            </ImageBackground>
+        </View>
+    );
 }
 export default HomeCategory;
 const width = Dimensions.get('window').width - 20;
@@ -181,8 +185,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     search: {
-        fontSize: 20, 
-        color: 'black', 
+        fontSize: 20,
+        color: 'black',
         paddingStart: 10,
         backgroundColor: 'white',
         fontWeight: 'bold',
