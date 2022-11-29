@@ -7,7 +7,7 @@ const Login = ({ navigation, }) => {
     const [isValidPhone, setValidPhone] = useState(true);
 
     const verifyPhoneNumber = (phone) => {
-        let regex = RegExp(/([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/);
+        let regex = RegExp(/([\+84|84|0]+(3|5|7|9|1[2|4|6|8]))+([0-9]{8})\b/);
         if(!phone) return true;
         if(regex.test(phone)){
             return true;
@@ -41,7 +41,7 @@ const Login = ({ navigation, }) => {
                             keyboardType='numeric'
                         />
                     </View>
-                    <Text style={styles.inputText}>{isValidPhone? '' : 'Vui lòng nhập đủ 10 số'}</Text>
+                    <Text style={styles.inputValidate}>{isValidPhone? '' : 'Vui lòng nhập đúng 10 số'}</Text>
                     <View style={styles.inputContainer}>
                         <TextInput placeholder='Mật khẩu' style={styles.inputText} />
                     </View>
@@ -100,8 +100,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: 3,
         borderBottomColor: '#d81b60',
         paddingVertical: 10,
-        color: '#000',
+       
         borderRadius: 10,
+    },
+    inputValidate:{
+        color: 'red',
+        paddingVertical: 5,
+
     },
     btn: {
         backgroundColor: '#d81b60',
