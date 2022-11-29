@@ -121,4 +121,42 @@ app.post("/cate", async (req, res) => {
     }
   
   });
- 
+ // food api
+
+ app.get("/foods", async(req,res)=>{
+    // res.status(201).json(items)
+    const courseRef =db.collection('Món ăn');
+    try{
+        courseRef.get().then((snapshot)=>{
+            const items = snapshot.docs.map((doc)=>({
+                docId: doc.id,
+                ...doc.data()
+            }))
+            res.status(201).json(items);
+        })
+    }catch(error){
+        res.status(500).json({message:error});
+    }
+})
+// app.get("/food/:keyword", async(req,res)=>{
+//     const courseRef =db.collection('Món ăn');
+//     try {
+//         courseRef.get().then((snapshot) => {
+//             const data = snapshot.docs.map((value) => (
+//                 {
+//                     id: value.id,
+//                     ...value.data(),
+//                 }
+//             ));
+//             let key = req.params.keyword
+//             const newData = data.filter((item) => {
+//                 const itemData = item.MaDM  ;
+//                 const textData=key;
+//                 return itemData.indexOf(textData)>-1
+//             });
+//             res.status(200).json(newData);
+//         })
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// })
