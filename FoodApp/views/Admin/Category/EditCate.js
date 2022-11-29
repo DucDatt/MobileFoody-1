@@ -30,13 +30,13 @@ const EditCate = ({
     const [name, setName] = useState('');
     const [id, setId] = useState('');
     const handleUpdate = (docId) => {
-        let newFood = {
+        let newCate = {
             TenDM: name,
             MaDM: id,
             HinhDM: selectedImage.localURI,
         }
 
-        dispatch(update(docId, newFood));
+        dispatch(update(docId, newCate));
         navigation.navigate('HomeCategory');
     }
     const del = (docId) => {

@@ -4,6 +4,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
+import { fetchAllCATEGORY, fetchSearchCATEGORY } from '../../redux/actions/categoryAction';
 
 const delayExecution = (mls) => {
     return new Promise((resolve) => {
@@ -12,6 +13,15 @@ const delayExecution = (mls) => {
 };
 const HomeCustomer = ({ navigation }) => {
     const dbp = useSelector((state) => state.products);
+    const dispatch = useDispatch();
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        dispatch(fetchAllCATEGORY())
+       
+        console.log(data)
+    }, []
+
+    )
     const HeaderComponent = () => {
         return (
             <View>
@@ -46,11 +56,11 @@ const HomeCustomer = ({ navigation }) => {
     const MainComponent = ({ item }) => {
         return (
             <View style={styles.mainContent}>
-                <TouchableOpacity key={item.id} style={styles.mainContainer} onPress={() => { navigation.navigate('Food', { productId: item.id, productImg: item.img, productName: item.name }) }}>
-                    <Image source={{ uri: item.img }} style={styles.thumbnail} />
+                <TouchableOpacity key={item.MaDM} style={styles.mainContainer} onPress={() => { navigation.navigate('Food', { productId: item.MaDM, productImg: item.HinhDM, productName: item.TenDM }) }}>
+                    <Image source={{ uri: item.HinhDM }} style={styles.thumbnail} />
                     <View style={styles.gametxt}>
-                        <Text style={styles.cateTitle}>{item.name} </Text>
-                        <Text>{item.totalPrice} </Text>
+                        <Text style={styles.cateTitle}>{item.TenDM} </Text>
+                        
                     </View>
                 </TouchableOpacity>
             </View>
@@ -59,7 +69,7 @@ const HomeCustomer = ({ navigation }) => {
     return (
         <View style={styles.HomeContainer}>
             <FlatList
-                data={dbp.products}
+                data={dbp.categories}
                 renderItem={MainComponent}
                 ListHeaderComponent={HeaderComponent}
             ></FlatList>
