@@ -54,8 +54,6 @@ app.get("/api/:keyword", async(req,res)=>{
     }
 })
 
-
-
 app.post("/cate", async (req, res) => {
     const{HinhDM,MaDM,TenDM} =req.body;
     
