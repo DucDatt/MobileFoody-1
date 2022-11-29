@@ -15,9 +15,19 @@ const HomeCustomer = ({ navigation }) => {
     const dbp = useSelector((state) => state.products);
     const dispatch = useDispatch();
     const [data, setData] = useState([]);
+
+    const [search, setSearch] = useState("");
+    const handleSeachCate = (key) => {
+        if (key.length > 0) {
+            dispatch(fetchSearchCATEGORY(key))
+        }
+        else {
+            dispatch(fetchAllCATEGORY())
+        }
+    }
+
     useEffect(() => {
         dispatch(fetchAllCATEGORY())
-       
         console.log(data)
     }, []
 
@@ -45,8 +55,18 @@ const HomeCustomer = ({ navigation }) => {
                         <Text style={styles.subTitle}>
                             Bạn đang đói? Chọn món và order thôi.
                         </Text>
-                        <TextInput style={styles.searchBar} placeholder='Tìm kiếm' placeholderTextColor='#cfcfcf' >
-                        </TextInput>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TextInput style={styles.searchBar} placeholder='Tìm kiếm'
+                                onChangeText={(text) => setSearch(text)}
+                            />
+
+                            <TouchableOpacity
+                                onPress={() => handleSeachCate(search)}
+                            >
+                                <Text style={styles.search}>Tìm kiếm</Text>
+                            </TouchableOpacity>
+                        </View>
+
                     </View>
                 </LinearGradient>
                 <Text style={{ textTransform: 'uppercase', fontWeight: '500', fontSize: 20, marginLeft: 25, textAlign: 'center' }}>menu</Text>
@@ -60,7 +80,7 @@ const HomeCustomer = ({ navigation }) => {
                     <Image source={{ uri: item.HinhDM }} style={styles.thumbnail} />
                     <View style={styles.gametxt}>
                         <Text style={styles.cateTitle}>{item.TenDM} </Text>
-                        
+
                     </View>
                 </TouchableOpacity>
             </View>
@@ -133,13 +153,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 20,
         marginTop: 30,
-        width: '90%',
+        width: '70%',
         height: 40,
         fontSize: 18,
         backgroundColor: '#fff',
-        opacity: 0.6,
         color: '#000',
         paddingLeft: 15
+    },
+    search: {
+        fontSize: 20,
+        color: 'black',
+        paddingStart: 10,
+        backgroundColor: 'white',
+        fontWeight: 'bold',
+        marginTop: 35,
+        borderRadius: 20,
     },
     tagContent: {
         flex: 1,

@@ -80,8 +80,6 @@ app.post("/cate", async (req, res) => {
   });
   app.put("/updateCate/:docId", async (req, res) => {
     const{HinhDM,MaDM,TenDM} =req.body;
-
-    
     try{
         const docId=req.params.docId
         const body=db.collection('Danh mục').doc(docId)
@@ -105,8 +103,6 @@ app.post("/cate", async (req, res) => {
   
   });
   app.delete("/delCate/:docId", async (req, res) => {
-
-    
     try{
         const docId=req.params.docId
         db.collection('Danh mục').doc(docId).delete()
@@ -120,7 +116,6 @@ app.post("/cate", async (req, res) => {
   
   });
  // food api
-
  app.get("/foods", async(req,res)=>{
     // res.status(201).json(items)
     const courseRef =db.collection('Món ăn');
