@@ -19,12 +19,12 @@ const Food = ({
     }
     useEffect(() => {
         dispatch(fetchAllFood())
-       
+
         console.log(data)
     }, []
 
     )
-    
+
     const { productId } = route.params;
     const { productImg } = route.params;
     const { productName } = route.params;
@@ -40,16 +40,16 @@ const Food = ({
                         <View style={styles.btnPrice}>
                             <Text style={{ textAlign: 'center', fontSize: 16 }}>{item.Gia} VND</Text>
                         </View>
-                        
+
                         <Modal
                             transparent={true}
                             visible={showModal}
                             animationType={'fade'}
                             onRequestClose={() => setShowModal(false)}>
                             <Pressable onPress={(evt) => evt.target == evt.currentTarget ? setShowModal(false) : setShowModal(true)} style={styles.modalContainer}>
-                               
+
                                 <View style={styles.modalContent}>
-                                    
+
                                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
 
                                         <View style={styles.imgContainer}>
@@ -91,10 +91,8 @@ const Food = ({
 
                 :
                 <View style={{ display: 'none' }}>
-
                 </View>
         )
-
     }
     return (
         <View style={styles.foodContainer}>
@@ -125,12 +123,8 @@ const Food = ({
                 </FlatList>
 
             </View>
-
-
         </View>
     )
-
-
 }
 export default Food;
 const width = Dimensions.get('window').width - 30;
