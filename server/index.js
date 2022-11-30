@@ -131,6 +131,21 @@ app.post("/cate", async (req, res) => {
         res.status(500).json({message:error});
     }
 })
+app.get("/countFood",async(req,res)=>{
+    const courseRef =db.collection('Món ăn');
+    courseRef.get().then((snapshot)=>{
+        const count = snapshot.size
+        res.status(201).json(count)
+    })
+})
+app.get("/countCate",async(req,res)=>{
+    const courseRef =db.collection('Danh mục');
+    courseRef.get().then((snapshot)=>{
+        const count = snapshot.size
+        res.status(201).json(count)
+    })
+})
+
 // app.get("/food/:keyword", async(req,res)=>{
 //     const courseRef =db.collection('Món ăn');
 //     try {

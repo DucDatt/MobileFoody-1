@@ -14,6 +14,7 @@ const delayExecution = (mls) => {
 const HomeCustomer = ({ navigation }) => {
     const dbp = useSelector((state) => state.products);
     const dispatch = useDispatch();
+    console.log(dbp)
     const [data, setData] = useState([]);
 
     const [search, setSearch] = useState("");
@@ -56,10 +57,7 @@ const HomeCustomer = ({ navigation }) => {
                             Bạn đang đói? Chọn món và order thôi.
                         </Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.searchBar} placeholder='Tìm kiếm'
-                                onChangeText={(text) => setSearch(text)}
-                            />
-
+                            <TextInput  onChangeText={(val) => setSearch(val)} style={styles.searchBar} placeholder='Tìm kiếm'     />
                             <TouchableOpacity
                                 onPress={() => handleSeachCate(search)}
                             >

@@ -1,8 +1,31 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
-
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 const Login = ({ navigation, }) => {
+
+
+    const[email,setEmail]=useState('')
+    const[password,setPassword]=useState('')
+    const auth = getAuth();
+
+    const login=()=>{
+        signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    
+    navigation.navigate("HomeCategory")
+    // ...
+  })
+  .catch((error) => {
+    setValidPhone(false)
+  });
+    }
+    
+
+
+
     const [number, onChangeNumber] = useState("");
     const [isValidPhone, setValidPhone] = useState(true);
 
@@ -33,19 +56,18 @@ const Login = ({ navigation, }) => {
                     <View style={styles.inputContainer}>
                         <TextInput placeholder='Số điện thoại' style={styles.inputText}
                             onChangeText={(text) => {
-                                onChangeNumber(text);
-                                const isValid = verifyPhoneNumber(text);
-                                isValid ? setValidPhone(true) : setValidPhone(false);
+                                setEmail(text)
                             }}
-                            value={number}
-                            keyboardType='numeric'
+                          
                         />
                     </View>
-                    <Text style={styles.inputValidate}>{isValidPhone? '' : 'Vui lòng nhập đúng 10 số'}</Text>
+                    <Text style={styles.inputValidate}>{isValidPhone? '' : 'Email không tồn tại'}</Text>
                     <View style={styles.inputContainer}>
-                        <TextInput placeholder='Mật khẩu' style={styles.inputText} />
+                        <TextInput placeholder='Mật khẩu' style={styles.inputText} secureTextEntry={true}   onChangeText={(text) => {
+                                setPassword(text)
+                            }}/>
                     </View>
-                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("HomeCategory")}>
+                    <TouchableOpacity style={styles.btn} onPress={() => login()}>
                         <Text style={styles.btnTxt} >Đăng nhập</Text>
                     </TouchableOpacity>
                     <TouchableOpacity >

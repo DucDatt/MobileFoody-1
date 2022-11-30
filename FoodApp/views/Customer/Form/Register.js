@@ -4,6 +4,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 const Register = ({
     navigation,
 }) => {
+
+    
     return (
         <View style={styles.loginContainer}>
             <ImageBackground 
