@@ -49,12 +49,12 @@ function HomeDrawer() {
             }} />
             <Drawer.Screen name="Login" component={Login} options={{
                 headerShown:false,
-                
+                title: "Đăng nhập",
                 drawerIcon: ({ size }) => <Icon name='users' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Register" component={Register} options={{
                 headerShown:false,
-               
+                title: "Đăng ký",
                 drawerIcon: ({ size }) => <Icon name='address-card' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Introduce" component={Introduce} options={{
