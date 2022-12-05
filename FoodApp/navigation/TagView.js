@@ -21,7 +21,7 @@ import DetailsProfile from '../views/Customer/Profile/DetailsProfile';
 import LikeScreen from '../views/Customer/Like/LikeScreen';
 import Introduce from '../views/Customer/Introduce';
 import ShoppingCart from '../views/Customer/FoodCustomer/ShoppingCart';
-
+import DetailPopUp from '../views/Customer/FoodCustomer/DetailPopUp';
 import HomeCategory from '../views/Admin/Category/HomeCategory';
 import AddCate from '../views/Admin/Category/AddCate';
 import EditCate from '../views/Admin/Category/EditCate';
@@ -35,10 +35,10 @@ function HomeDrawer() {
     return (
         <Drawer.Navigator initialRouteName="HomeCustomer"
             screenOptions={{
-                drawerStyle: { backgroundColor: '#9c27b0' },
-                drawerLabelStyle: { color: '#FFF' },
-                headerStyle: { backgroundColor: '#9c27b0' },
-                headerTintColor: '#FFF',
+                drawerStyle: { backgroundColor: '#fff' },
+                drawerLabelStyle: { color: '#000' },
+                headerStyle: { backgroundColor: '#fff' },
+                headerTintColor: '#000',
                 drawerItemStyle: { borderBottomWidth: 1, borderBottomColor: '#FFF' },
                 drawerActiveBackgroundColor: '#6a0080'
             }}
@@ -126,6 +126,7 @@ function Customer() {
             <Stack.Screen name="ChatScreen" component={ChatScreen} options={navOptionHandler} />
             <Stack.Screen name="Profile" component={Profile} options={navOptionHandler} />
             <Stack.Screen name="Food" component={Food} options={navOptionHandler} />
+            <Stack.Screen name="DetailPopUp" component={DetailPopUp} options={navOptionHandler} />
             <Stack.Screen name="DetailsProfile" component={DetailsProfile} options={navOptionHandler} />
             <Stack.Screen name="LikeScreen" component={LikeScreen} options={navOptionHandler} />
             <Stack.Screen name="Introduce" component={Introduce} options={navOptionHandler} />

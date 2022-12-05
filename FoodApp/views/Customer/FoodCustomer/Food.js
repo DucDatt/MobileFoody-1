@@ -11,6 +11,7 @@ import { fetchAllFood, fetchSearchFood } from '../../../redux/actions/foodAction
 const Food = ({
     navigation, route
 }) => {
+    
     const db = useSelector((state) => state.foods);
     const dispatch = useDispatch();
     const [data, setData] = useState([]);
@@ -19,71 +20,36 @@ const Food = ({
     }
     useEffect(() => {
         dispatch(fetchAllFood())
-
-        console.log(data)
     }, []
-
+    
     )
-
+    
     const { productId } = route.params;
     const { productImg } = route.params;
     const { productName } = route.params;
     const [id, setId] = useState(productId);
-    const [showModal, setShowModal] = useState(false);
+   
     const MainComponent = ({ item }) => {
         return (
             item.MaDM == id ?
                 <View style={styles.mainContent}>
-                    <TouchableOpacity style={styles.mainContainer} onPress={() => setShowModal(true)} >
+                    <TouchableOpacity style={styles.mainContainer} onPress={() => { navigation.navigate('DetailPopUp',
+                    {
+                        foodId:item.docId,
+                        foodName:item.TenMA,
+                        foodPrice:item.Gia,
+                        foodDes:item.MoTa,
+                        foodImg:item.HinhMA,
+                        foodCoupon:item.MaGG
+                    
+                    }
+                    ) }} >
                         <Image source={{ uri: item.HinhMA }} style={styles.foodImg} />
                         <Text style={{ fontWeight: '700', fontSize: 16 }}>{item.TenMA} </Text>
                         <View style={styles.btnPrice}>
                             <Text style={{ textAlign: 'center', fontSize: 16 }}>{item.Gia} VND</Text>
                         </View>
 
-                        <Modal
-                            transparent={true}
-                            visible={showModal}
-                            animationType={'fade'}
-                            onRequestClose={() => setShowModal(false)}>
-                            <Pressable onPress={(evt) => evt.target == evt.currentTarget ? setShowModal(false) : setShowModal(true)} style={styles.modalContainer}>
-
-                                <View style={styles.modalContent}>
-
-                                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-
-                                        <View style={styles.imgContainer}>
-                                            <Image style={styles.img} key={item.MaMA} source={{ uri: item.HinhMA }} />
-                                            <Text style={styles.txtF}>{item.TenMA}    </Text>
-                                            <Text style={{ flexWrap: 'wrap', padding: 5 }}>{item.MoTa}</Text>
-                                        </View>
-                                    </View>
-                                </View>
-                                <View style={{ flexDirection: 'row', top: -50, justifyContent: 'space-between', width: '90%' }}>
-                                    <View style={{ justifyContent: 'space-between', width: '40%', flexDirection: 'row' }}>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Ionicons
-                                                name='add-outline'
-                                                size={15}
-                                                color='#fff'>
-                                            </Ionicons>
-                                        </TouchableOpacity>
-                                        <Text style={{ justifyContent: 'center', alignSelf: 'center' }}>1</Text>
-                                        <TouchableOpacity style={styles.btn}>
-                                            <Ionicons
-                                                name='remove-outline'
-                                                size={15}
-                                                color='#fff'>
-                                            </Ionicons>
-                                        </TouchableOpacity>
-                                    </View>
-                                    <TouchableOpacity style={styles.cartBtn}>
-                                        <Text style={{ color: '#fff' }} onPress={() => { navigation.navigate('ShoppingCart')}}>Add to cart</Text>
-                                    </TouchableOpacity>
-                                </View>
-
-                            </Pressable>
-                        </Modal>
                     </TouchableOpacity>
                 </View>
 
@@ -112,6 +78,8 @@ const Food = ({
                 <View style={styles.foodMenu}>
                     <Text style={{ fontSize: 20, fontWeight: '800' }}>{productName}</Text>
                 </View>
+                
+               
                 <FlatList
                     keyExtractor={item => item.MaMA.toString()}
                     numColumns={4}
