@@ -48,11 +48,13 @@ function HomeDrawer() {
                 drawerIcon: ({ size }) => <Ionicons name='home-outline' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Login" component={Login} options={{
-                title: "Đăng nhập",
+                headerShown:false,
+                
                 drawerIcon: ({ size }) => <Icon name='users' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Register" component={Register} options={{
-                title: "Đăng ký",
+                headerShown:false,
+               
                 drawerIcon: ({ size }) => <Icon name='address-card' color='#FFF' size={size} />
             }} />
             <Drawer.Screen name="Introduce" component={Introduce} options={{

@@ -1,9 +1,34 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
+import { Alert } from 'react-native';
 
 const Register = ({
     navigation,
 }) => {
+    const[email,setEmail]=useState('')
+    const[name,setName]=useState('')
+    const[diaChi,setDiachi]=useState('')
+    const[password,setPassword]=useState('')
+    const auth = getAuth();
+
+    const register=()=>{
+    createUserWithEmailAndPassword(auth,email,password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+
+
+    alert('Vui lòng thử lại')
+  });
+    }
+    
     return (
         <View style={styles.loginContainer}>
             <ImageBackground 
@@ -19,26 +44,38 @@ const Register = ({
                     Đăng ký
                 </Text>
                 <View style={styles.formContainer}>
-                    <View style={styles.inputContainer}>
-                        <TextInput placeholder='Họ và tên' style={styles.inputText}/>
-                    </View>
+                    {/* <View style={styles.inputContainer}>
+                        <TextInput placeholder='Họ và tên' style={styles.inputText} onChangeText={(text) => {
+                                setName(text)
+                            }}
+                          />
+                    </View> */}
                     
                     <View style={styles.inputContainer}>
-                        <TextInput placeholder='Số điện thoại' style={styles.inputText}/>
+                        <TextInput placeholder='Email'onChangeText={(text) => {
+                                setEmail(text)
+                            }}
+                           style={styles.inputText}/>
                     </View>
 
-                    <View style={styles.inputContainer}>
-                        <TextInput placeholder='Địa chỉ' style={styles.inputText}/>
-                    </View>
+                    {/* <View style={styles.inputContainer}>
+                        <TextInput onChangeText={(text) => {
+                                setDiachi(text)
+                            }}
+                           placeholder='Địa chỉ' style={styles.inputText}/>
+                    </View> */}
                     
                     <View style={styles.inputContainer}>
-                        <TextInput placeholder='Mật khẩu' style={styles.inputText}/>
+                        <TextInput placeholder='Mật khẩu' secureTextEntry={true} onChangeText={(text) => {
+                                setPassword(text)
+                            }}
+                          style={styles.inputText}/>
                     </View>
-                    <View style={styles.inputContainer}>
+                    {/* <View style={styles.inputContainer}>
                         <TextInput placeholder='Xác nhận mật khẩu' style={styles.inputText}/>
-                    </View>
+                    </View> */}
                     
-                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Login")}>
+                    <TouchableOpacity style={styles.btn} onPress={() => register()}>
                         <Text style={styles.btnTxt} >Đăng ký</Text>
                     </TouchableOpacity>
                 </View>
