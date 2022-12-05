@@ -78,14 +78,12 @@ const Food = ({
                                         </TouchableOpacity>
                                     </View>
                                     <TouchableOpacity style={styles.cartBtn}>
-                                        <Text style={{ color: '#fff' }}>Add to cart</Text>
+                                        <Text style={{ color: '#fff' }} onPress={() => { navigation.navigate('ShoppingCart')}}>Add to cart</Text>
                                     </TouchableOpacity>
                                 </View>
 
                             </Pressable>
                         </Modal>
-
-
                     </TouchableOpacity>
                 </View>
 
@@ -116,7 +114,7 @@ const Food = ({
                 </View>
                 <FlatList
                     keyExtractor={item => item.MaMA.toString()}
-                    numColumns={2}
+                    numColumns={4}
                     data={db.foods}
                     renderItem={MainComponent}>
 
@@ -142,7 +140,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         borderRadius: 25,
-        backgroundColor: '#FFF'
+        backgroundColor: '#FFF',
     },
     headerImg: {
         height: '100%',
@@ -165,14 +163,12 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.5,
-        elevation: 5
+        elevation: 5,
 
     },
     mainContainer: {
         width: '100%',
-
         borderRadius: 20,
-
     },
     foodImg: {
         width: '100%',

@@ -20,7 +20,7 @@ const Profile = ({navigation,}) => {
                 </FlatList>
             </View>
             <View style={{flexDirection:'row',paddingVertical:10}}>
-                <Image  style={styles.imgProfile}  source={{uri:'https://media.vov.vn/sites/default/files/styles/large/public/2021-11/dbruyne.jpeg'}}/>
+                <Image  style={styles.imgProfile}  source={{uri:'https://firebasestorage.googleapis.com/v0/b/mobilefood-6668b.appspot.com/o/ImageCustomer%2Fkevin.jpeg?alt=media&token=ee3db2ce-cf34-41c6-a801-28b59e9ab4b9'}}/>
                 <View style={{flexDirection:'column'}}>
                     <Text style={styles.profilename}>Kevin</Text>
                     <TouchableOpacity style={{flexDirection:'row',flex:1}} onPress={() => {navigation.navigate('DetailsProfile')}}>
