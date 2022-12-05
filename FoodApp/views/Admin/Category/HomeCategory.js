@@ -10,6 +10,8 @@ const HomeCategory = ({ navigation, }) => {
     const db = useSelector(store => store.products)
     const dispatch = useDispatch();
     console.log(db)
+
+    const [count, setCount] = useState(0);
     const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
     const handleSeachCate = (key) => {
@@ -22,8 +24,8 @@ const HomeCategory = ({ navigation, }) => {
     }
     useEffect(() => {
         dispatch(fetchAllCATEGORY())
-        // setData(db.courses)
-        console.log(data)
+        const a = db.categories.length
+        setCount(a)
     }, []
 
     )
@@ -52,7 +54,7 @@ const HomeCategory = ({ navigation, }) => {
                 </View>
                 <View style={styles.ItemDetail}>
                     <Text style={styles.nameTxt}>{item.TenDM}</Text>
-
+                    <Text>{count} </Text>
                 </View>
             </TouchableOpacity>
         )
@@ -69,6 +71,7 @@ const HomeCategory = ({ navigation, }) => {
                         onPress={() => handleSeachCate(search)}
                     >
                         <Text style={styles.search}>Tìm kiếm</Text>
+                      
                     </TouchableOpacity>
                 </View>
 
