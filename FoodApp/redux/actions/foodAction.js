@@ -37,7 +37,7 @@ export const fetchSearchFood=(key)=>{
     return (dispatch)=>{
       const getData = async () => {
         try {
-            const response = await fetch(`http://localhost:9001/food/${key}`);
+            const response = await fetch("http://localhost:9001/foods/"+key);
             const cate = await response.json();
             // console.log(books)
             dispatch(SearchFood(cate))

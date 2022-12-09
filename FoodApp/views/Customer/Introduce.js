@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
-const Introduce = ({ params, }) => {
+const Introduce = ({ navigation, }) => {
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -37,7 +37,6 @@ const Introduce = ({ params, }) => {
           </View>
         </View>
       </ScrollView>
-
     </View>
   )
 };

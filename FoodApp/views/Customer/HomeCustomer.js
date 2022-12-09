@@ -57,7 +57,7 @@ const HomeCustomer = ({ navigation }) => {
                             Bạn đang đói? Chọn món và order thôi.
                         </Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <TextInput  onChangeText={(val) => setSearch(val)} style={styles.searchBar} placeholder='Tìm kiếm'     />
+                            <TextInput onChangeText={(Text) => setSearch(Text)} style={styles.searchBar} placeholder='Tìm kiếm' />
                             <TouchableOpacity
                                 onPress={() => handleSeachCate(search)}
                             >

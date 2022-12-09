@@ -16,17 +16,23 @@ const EditCate = ({ navigation, route }) => {
     const { cateId } = route.params;
     const { cateImg } = route.params;
     const { cateName } = route.params;
+    const { catePrice } = route.params;
+    const { cateDescription } = route.params;
 
     const { cateDocId } = route.params;
 
     const [docId, setdocId] = useState(cateDocId);
 
     const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
     const [id, setId] = useState('');
     const handleUpdate = (docId) => {
         let newCate = {
             TenDM: name,
             MaDM: id,
+            Gia: price,
+            MoTa: description,
             HinhDM: selectedImage.localURI,
         }
 
@@ -127,10 +133,15 @@ const EditCate = ({ navigation, route }) => {
                 </TouchableOpacity>
 
                 <View style={styles.inputContainer}>
+                    <TextInput placeholder={cateId} style={styles.inputText} onChangeText={(val) => setId(val)} />
+                </View>
+                <View style={styles.inputContainer}>
                     <TextInput placeholder={cateName} style={styles.inputText} onChangeText={(val) => setName(val)} />
                 </View>
                 <View style={styles.inputContainer}>
-                    <TextInput placeholder={cateId} style={styles.inputText} onChangeText={(val) => setId(val)} />
+                    <TextInput placeholder={catePrice} style={styles.inputText} onChangeText={(val) => setId(val)} />
+                </View><View style={styles.inputContainer}>
+                    <TextInput placeholder={cateDescription} style={styles.inputText} onChangeText={(val) => setId(val)} />
                 </View>
                 <View style={styles.inputContainer}>
                     <TextInput placeholder='Hình ảnh' style={styles.inputText} value={selectedImage.localURI} />
@@ -180,7 +191,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10,
-        marginTop: 50,
+        marginTop: 40,
     },
     btnTxt: {
         fontSize: 14,

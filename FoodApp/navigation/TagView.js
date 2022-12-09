@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from "@react-navigation/drawer";
+
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -22,9 +23,14 @@ import LikeScreen from '../views/Customer/Like/LikeScreen';
 import Introduce from '../views/Customer/Introduce';
 import ShoppingCart from '../views/Customer/FoodCustomer/ShoppingCart';
 import DetailPopUp from '../views/Customer/FoodCustomer/DetailPopUp';
+
 import HomeCategory from '../views/Admin/Category/HomeCategory';
 import AddCate from '../views/Admin/Category/AddCate';
 import EditCate from '../views/Admin/Category/EditCate';
+
+import HomeFood from '../views/Shop/Food/HomeFood';
+import AddFood from '../views/Shop/Food/AddFood';
+import EditFood from '../views/Shop/Food/EditFood';
 
 const navOptionHandler = () => ({
     headerShown: false
@@ -40,26 +46,34 @@ function HomeDrawer() {
                 headerStyle: { backgroundColor: '#fff' },
                 headerTintColor: '#000',
                 drawerItemStyle: { borderBottomWidth: 1, borderBottomColor: '#FFF' },
-                drawerActiveBackgroundColor: '#6a0080'
+                drawerActiveBackgroundColor: '#fff'
             }}
         >
             <Drawer.Screen name="Home" component={HomeTab} options={{
                 title: "Trang chủ",
-                drawerIcon: ({ size }) => <Ionicons name='home-outline' color='#FFF' size={size} />
+                drawerIcon: ({ size }) => <Ionicons name='home-outline' color='#000' size={size} />
             }} />
             <Drawer.Screen name="Login" component={Login} options={{
                 headerShown:false,
                 title: "Đăng nhập",
-                drawerIcon: ({ size }) => <Icon name='users' color='#FFF' size={size} />
+                drawerIcon: ({ size }) => <Icon name='users' color='#000' size={size} />
             }} />
             <Drawer.Screen name="Register" component={Register} options={{
                 headerShown:false,
                 title: "Đăng ký",
-                drawerIcon: ({ size }) => <Icon name='address-card' color='#FFF' size={size} />
+                drawerIcon: ({ size }) => <Icon name='address-card' color='#000' size={size} />
             }} />
             <Drawer.Screen name="Introduce" component={Introduce} options={{
                 title: "Giới thiệu",
-                drawerIcon: ({ size }) => <Icon name='info' color='#FFF' size={size} />
+                drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
+            }} />
+            <Drawer.Screen name="HomeCategory" component={HomeCategory} options={{
+                title: "Danh mục",
+                drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
+            }} />
+            <Drawer.Screen name="HomeFood" component={HomeFood} options={{
+                title: "Món ăn",
+                drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
             }} />
         </Drawer.Navigator>
     )
@@ -136,30 +150,34 @@ function Customer() {
 }
 
 function Admin() {
-    const Stack = createNativeStackNavigator();
+    const StackAdmin = createNativeStackNavigator();
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="HomeCategory" component={AdminCategory} options={navOptionHandler} />
-        </Stack.Navigator>
+        <StackAdmin.Navigator>
+            <StackAdmin.Screen name="HomeCategory" component={HomeCategory} options={navOptionHandler} />
+        </StackAdmin.Navigator>
     )
 }
 
-function AdminCategory() {
-    const Stack = createNativeStackNavigator();
+function Shop(){
+    const StackShop = createNativeStackNavigator();
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="HomeCategory" component={HomeCategory} options={navOptionHandler} />
-            <Stack.Screen name="AddCate" component={AddCate} options={navOptionHandler} />
-            <Stack.Screen name="EditCate" component={EditCate} options={navOptionHandler} />
-        </Stack.Navigator>
+        <StackShop.Navigator>
+            <StackShop.Screen name="HomeFood" component={HomeFood} options={navOptionHandler} />
+        </StackShop.Navigator>
     )
 }
+
 export default function TagView() {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator>
             <Stack.Screen name="Home" component={Customer} options={navOptionHandler} />
-            <Stack.Screen name="HomeCategory" component={Admin} options={navOptionHandler} />
+            <Stack.Screen name="Admin" component={Admin} options={navOptionHandler} />
+            <Stack.Screen name="Shop" component={Shop} options={navOptionHandler} />
+            <Stack.Screen name="AddCate" component={AddCate} options={navOptionHandler} />
+            <Stack.Screen name="EditCate" component={EditCate} options={navOptionHandler} />
+            <Stack.Screen name="AddFood" component={AddFood} options={navOptionHandler} />
+            <Stack.Screen name="EditFood" component={EditFood} options={navOptionHandler} />
         </Stack.Navigator>
     )
 }

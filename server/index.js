@@ -100,7 +100,6 @@ app.post("/cate", async (req, res) => {
     }catch(error){
         res.status(500).json({message:error });
     }
-  
   });
   app.delete("/delCate/:docId", async (req, res) => {
     try{
@@ -146,25 +145,27 @@ app.get("/countCate",async(req,res)=>{
     })
 })
 
-// app.get("/food/:keyword", async(req,res)=>{
-//     const courseRef =db.collection('Món ăn');
-//     try {
-//         courseRef.get().then((snapshot) => {
-//             const data = snapshot.docs.map((value) => (
-//                 {
-//                     id: value.id,
-//                     ...value.data(),
-//                 }
-//             ));
-//             let key = req.params.keyword
-//             const newData = data.filter((item) => {
-//                 const itemData = item.MaDM  ;
-//                 const textData=key;
-//                 return itemData.indexOf(textData)>-1
-//             });
-//             res.status(200).json(newData);
-//         })
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// })
+app.get("/foods/:keyword", async(req,res)=>{
+    const courseRef =db.collection('Món ăn');
+    try {
+        courseRef.get().then((snapshot) => {
+            const data = snapshot.docs.map((value) => (
+                {
+                    id: value.id,
+                    ...value.data(),
+                }
+            ));
+            let key = req.params.keyword
+            const newData = data.filter((item) => {
+                const itemData = item.TenMA
+                    ? item.TenMA.toLowerCase()
+                    : ''.toLowerCase();
+                const textData = key.toLowerCase();
+                return itemData.indexOf(textData) > -1;
+            });
+            res.status(200).json(newData);
+        })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
