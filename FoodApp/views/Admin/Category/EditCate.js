@@ -136,10 +136,10 @@ const EditCate = ({ navigation, route }) => {
                     <TextInput placeholder='Hình ảnh' style={styles.inputText} value={selectedImage.localURI} />
                 </View>
                 <TouchableOpacity style={styles.btn} onPress={() => handleUpdate(docId)}>
-                    <Text style={styles.btnTxt} >Sửa món ăn</Text>
+                    <Text style={styles.btnTxt} >Sửa danh mục</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btn} onPress={() => del(docId)}>
-                    <Text style={styles.btnTxt} >Xóa món ăn</Text>
+                    <Text style={styles.btnTxt} >Xóa danh mục</Text>
                 </TouchableOpacity>
             </ImageBackground>
         </View>

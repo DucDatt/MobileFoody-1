@@ -54,7 +54,6 @@ const HomeCategory = ({ navigation, }) => {
                 </View>
                 <View style={styles.ItemDetail}>
                     <Text style={styles.nameTxt}>{item.TenDM}</Text>
-                    <Text>{count} </Text>
                 </View>
             </TouchableOpacity>
         )

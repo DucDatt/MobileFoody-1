@@ -128,7 +128,7 @@ const AddCate = ({
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity style={styles.btn} onPress={() => save()}>
-                        <Text style={styles.btnTxt} >Thêm món ăn</Text>
+                        <Text style={styles.btnTxt} >Thêm danh mục</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

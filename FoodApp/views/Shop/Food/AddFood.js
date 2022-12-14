@@ -11,7 +11,7 @@ import * as ImagePicker from 'expo-image-picker'
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import { postCATEGORY } from '../../../redux/actions/categoryAction';
+import { postFOOD } from '../../../redux/actions/foodAction';
 
 const AddFood = ({
     navigation,
@@ -33,7 +33,7 @@ const AddFood = ({
             MoTa: description,
             HinhMA: selectedImage.localURI,
         }
-        dispatch(postCATEGORY(newFood));
+        dispatch(postFOOD(newFood));
         navigation.navigate('HomeFood');
     }
     const [selectedImage, setSelectedImage] = useState({ localURI: img });
