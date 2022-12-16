@@ -27,12 +27,12 @@ const HomeAdmin = ({ navigation }) => {
         </View>
         <View style={styles.contentAdmin}>
           <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('HomeFood')}>
-            <Ionicons name='add-circle' size={24}/>
+            <Ionicons name='home' size={24}/>
             <Text style={{fontWeight: '800',}}>Food</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.contentItem}>
-            <Ionicons name='create' size={24}/>
-            <Text style={{fontWeight: '800',}}>Update/Delete</Text>
+          <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('AddFood')}>
+            <Ionicons name='add-circle' size={24}/>
+            <Text style={{fontWeight: '800',}}>Add</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.contentItem}>
             <Ionicons name='pricetags' size={24}/>

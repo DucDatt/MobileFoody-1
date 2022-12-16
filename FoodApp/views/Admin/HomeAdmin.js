@@ -30,6 +30,10 @@ const HomeAdmin = ({ navigation }) => {
             <Ionicons name='home' size={24}/>
             <Text style={{fontWeight: '800',}}>Home Category</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('AddCate')}>
+            <Ionicons name='add-circle' size={24}/>
+            <Text style={{fontWeight: '800',}}>Add Category</Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.contentItem}>
             <Ionicons name='pricetags' size={24}/>
             <Text style={{fontWeight: '800',}}>Discount</Text>
