@@ -33,16 +33,16 @@ const Food = ({
         return (
             item.MaDM == id ?
                 <View style={styles.mainContent}>
-                    <TouchableOpacity style={styles.mainContainer} onPress={() => { navigation.navigate('DetailPopUp',
-                    {
-                        foodId:item.docId,
-                        foodName:item.TenMA,
-                        foodPrice:item.Gia,
-                        foodDes:item.MoTa,
-                        foodImg:item.HinhMA,
-                        foodCoupon:item.MaGG
-                    
-                    }
+                        <TouchableOpacity style={styles.mainContainer} onPress={() => { navigation.navigate('DetailPopUp',
+                        {
+                            foodId:item.docId,
+                            foodName:item.TenMA,
+                            foodPrice:item.Gia,
+                            foodDes:item.MoTa,
+                            foodImg:item.HinhMA,
+                            foodCoupon:item.MaGG
+                        
+                        }
                     ) }} >
                         <Image source={{ uri: item.HinhMA }} style={styles.foodImg} />
                         <Text style={{ fontWeight: '700', fontSize: 16 }}>{item.TenMA} </Text>
@@ -81,7 +81,7 @@ const Food = ({
                 
                
                 <FlatList
-                    keyExtractor={item => item.MaMA.toString()}
+                    keyExtractor={item => item.MaMA}
                     numColumns={4}
                     data={db.foods}
                     renderItem={MainComponent}>
