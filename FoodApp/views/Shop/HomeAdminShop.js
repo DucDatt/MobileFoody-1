@@ -26,9 +26,9 @@ const HomeAdmin = ({ navigation }) => {
             <Text style={{color: 'yellow',  fontSize: 36}}>Admin Shop</Text>
         </View>
         <View style={styles.contentAdmin}>
-          <TouchableOpacity style={styles.contentItem}>
+          <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('HomeFood')}>
             <Ionicons name='add-circle' size={24}/>
-            <Text style={{fontWeight: '800',}}>Add</Text>
+            <Text style={{fontWeight: '800',}}>Food</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.contentItem}>
             <Ionicons name='create' size={24}/>

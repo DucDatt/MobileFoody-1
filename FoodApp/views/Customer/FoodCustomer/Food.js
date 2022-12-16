@@ -81,7 +81,7 @@ const Food = ({
                 
                
                 <FlatList
-                    keyExtractor={item => item.MaMA.toString()}
+                    keyExtractor={item => item.MaMA}
                     numColumns={4}
                     data={db.foods}
                     renderItem={MainComponent}>

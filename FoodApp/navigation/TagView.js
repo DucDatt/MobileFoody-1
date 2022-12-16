@@ -77,10 +77,6 @@ function HomeDrawer() {
                 title: "Home Admin Shop",
                 drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
             }} />
-            <Drawer.Screen name="HomeFood" component={HomeFood} options={{
-                title: "Món ăn",
-                drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
-            }} />
         </Drawer.Navigator>
     )
 }
@@ -162,33 +158,15 @@ function Customer() {
     )
 }
 
-function Admin() {
-    const StackAdmin = createNativeStackNavigator();
-    return (
-        <StackAdmin.Navigator>
-            <StackAdmin.Screen name="HomeCategory" component={HomeCategory} options={navOptionHandler} />
-        </StackAdmin.Navigator>
-    )
-}
-
-function Shop(){
-    const StackShop = createNativeStackNavigator();
-    return (
-        <StackShop.Navigator>
-            <StackShop.Screen name="HomeFood" component={HomeFood} options={navOptionHandler} />
-        </StackShop.Navigator>
-    )
-}
-
 export default function TagView() {
     const Stack = createNativeStackNavigator();
     return (
         <Stack.Navigator>
             <Stack.Screen name="Home" component={Customer} options={navOptionHandler} />
             <Stack.Screen name="HomeCategory" component={HomeCategory} options={navOptionHandler} />
-            <Stack.Screen name="Shop" component={Shop} options={navOptionHandler} />
             <Stack.Screen name="AddCate" component={AddCate} options={navOptionHandler} />
             <Stack.Screen name="EditCate" component={EditCate} options={navOptionHandler} />
+            <Stack.Screen name="HomeFood" component={HomeFood} options={navOptionHandler} />
             <Stack.Screen name="AddFood" component={AddFood} options={navOptionHandler} />
             <Stack.Screen name="EditFood" component={EditFood} options={navOptionHandler} />
         </Stack.Navigator>
