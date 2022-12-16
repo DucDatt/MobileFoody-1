@@ -1,71 +1,100 @@
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View, TouchableOpacity, Modal, Pressable } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Alert } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import {
+    CART,
+    CARTActions,
+    RemoveCARTActions,
+} from "../../../redux/actions/cartAction";
+
 const Detail = ({
-    navigation, route
+    navigation, route, item
 }) => {
     const [showModal, setShowModal] = useState(true);
-    const {foodId} =route.params
-    const {foodDes} =route.params
-    const {foodImg} =route.params
-    const {foodName} =route.params
-    const {foodPrice} =route.params
+    const { foodId } = route.params
+    const { foodDes } = route.params
+    const { foodImg } = route.params
+    const { foodName } = route.params
+    const { foodPrice } = route.params
+    const { foodCount } = route.params
+    const [count, setCount] = useState(1);
+    const dispatch = useDispatch();
+    const Cart  = useSelector((state) => state.CartReducer);
+    const tangGiamSL = (maSP, sl) => {
+        let gioHangUpdate = [...Cart];
+        let productFind = gioHangUpdate.find((product) => product.foodId === maSP);
+        if (productFind) {
+            productFind.Soluong += sl;
+            if (productFind.Soluong < 1) {
+                alert("Số lượng không đúng");
+                productFind.Soluong -= sl;
+            }
+        }
 
-    const popUp=()=>{
+        setCount({
+            Cart: gioHangUpdate,
+        });
+    };
+    const popUp = () => {
         setShowModal(false);
         navigation.goBack();
     }
-   return (
-   
-    <Modal
-        transparent={true}
-        visible={showModal}
-        animationType={'fade'}
-        onRequestClose={() => setShowModal(false)}>
-        <Pressable onPress={(evt) => evt.target == evt.currentTarget ? popUp() : setShowModal(true)} style={styles.modalContainer}>
+    return (
 
-            <View style={styles.modalContent}>
+        <Modal
+            transparent={true}
+            visible={showModal}
+            animationType={'fade'}
+            onRequestClose={() => setShowModal(false)}>
+            <Pressable onPress={(evt) => evt.target == evt.currentTarget ? popUp() : setShowModal(true)} style={styles.modalContainer}>
 
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                <View style={styles.modalContent}>
 
-                    <View style={styles.imgContainer}>
-                        <Image style={styles.img} key={foodId} source={{ uri: foodImg }} />
-                        <Text style={styles.txtF}>{foodName}    </Text>
-                        <Text style={styles.txtF}>{foodPrice}Vnd   </Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
 
-                        <Text style={{ flexWrap: 'wrap', padding: 5 }}>{foodDes}</Text>
+                        <View style={styles.imgContainer}>
+                            <Image style={styles.img} key={foodId} source={{ uri: foodImg }} />
+                            <Text style={styles.txtF}>{foodName}    </Text>
+                            <Text style={styles.txtF}>{foodPrice}Vnd   </Text>
+
+                            <Text style={{ flexWrap: 'wrap', padding: 5 }}>{foodDes}</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
-            <View style={{ flexDirection: 'row', top: -50, justifyContent: 'space-between', width: '90%' }}>
-                <View style={{ justifyContent: 'space-between', width: '40%', flexDirection: 'row' }}>
-                    <TouchableOpacity style={styles.btn}>
-                        <Ionicons
-                            name='add-outline'
-                            size={15}
-                            color='#fff'>
-                        </Ionicons>
+                <View style={{ flexDirection: 'row', top: -50, justifyContent: 'space-between', width: '90%' }}>
+                    <View style={{ justifyContent: 'space-between', width: '40%', flexDirection: 'row' }}>
+                        <TouchableOpacity style={styles.btn} onPress={() => { tangGiamSL(item.MaMA, 1); }}>
+                            <Ionicons
+                                name='add-outline'
+                                size={15}
+                                color='#fff'>
+                            </Ionicons>
+                        </TouchableOpacity>
+                        <Text style={{ justifyContent: 'center', alignSelf: 'center' }}>1</Text>
+                        <TouchableOpacity style={styles.btn} onPress={() => { tangGiamSL(item.MaMA, -1); }}>
+                            <Ionicons
+                                name='remove-outline'
+                                size={15}
+                                color='#fff'>
+                            </Ionicons>
+                        </TouchableOpacity>
+                    </View>
+                    <TouchableOpacity style={styles.cartBtn}>
+                        <Text style={{ color: '#fff' }} onPress={() => { dispatch(CARTActions(item)); Alert.alert("Thêm món thành công"); }}>Thêm vào giỏ hàng</Text>
                     </TouchableOpacity>
-                    <Text style={{ justifyContent: 'center', alignSelf: 'center' }}>1</Text>
-                    <TouchableOpacity style={styles.btn}>
-                        <Ionicons
-                            name='remove-outline'
-                            size={15}
-                            color='#fff'>
-                        </Ionicons>
+                    <TouchableOpacity onPress={() => { navigation.navigate('ShoppingCart') }}>
+                        <Icon name='cart-plus' color='blue' size={30} />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.cartBtn}>
-                    <Text style={{ color: '#fff' }} onPress={() => { navigation.navigate('ShoppingCart') }}>Add to cart</Text>
-                </TouchableOpacity>
-            </View>
 
-        </Pressable>
-    </Modal>
-);
-    }
+            </Pressable>
+        </Modal>
+    );
+}
 export default Detail;
 const styles = StyleSheet.create({
     foodContainer: {
@@ -92,7 +121,7 @@ const styles = StyleSheet.create({
     foodMenu: {
         padding: 20
     },
-   
+
     mainContainer: {
         width: '100%',
         borderRadius: 20,
@@ -172,7 +201,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#000',
         borderRadius: 20,
-        width: '60%',
-        marginLeft: 30
+        width: '40%',
+        marginLeft: 15
     }
 });

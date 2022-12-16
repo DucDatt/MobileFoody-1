@@ -1,4 +1,3 @@
-
 import { GETALL_CATEGORY, CREATE_CATEGORY, DELETE_CATEGORY, SEARCH_CATEGORY, UPDATE_CATEGORY } from "../actions/categoryAction";
 
 const initialState = {

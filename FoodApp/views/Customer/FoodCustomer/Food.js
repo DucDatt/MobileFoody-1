@@ -40,8 +40,8 @@ const Food = ({
                         foodPrice:item.Gia,
                         foodDes:item.MoTa,
                         foodImg:item.HinhMA,
-                        foodCoupon:item.MaGG
-                    
+                        foodCoupon:item.MaGG,
+                        foodCount:item.Soluong
                     }
                     ) }} >
                         <Image source={{ uri: item.HinhMA }} style={styles.foodImg} />
@@ -81,7 +81,7 @@ const Food = ({
                 
                
                 <FlatList
-                    keyExtractor={item => item.MaMA.toString()}
+                    keyExtractor={item => item.MaMA}
                     numColumns={4}
                     data={db.foods}
                     renderItem={MainComponent}>

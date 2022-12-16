@@ -2,6 +2,7 @@ import {  Text, View, StyleSheet, Image, FlatList } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const items = [
     {
