@@ -30,9 +30,9 @@ const HomeAdmin = ({ navigation }) => {
             <Ionicons name='home' size={24}/>
             <Text style={{fontWeight: '800',}}>Food</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('AddFood')}>
+          <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('HomeDiscount')}>
             <Ionicons name='add-circle' size={24}/>
-            <Text style={{fontWeight: '800',}}>Add</Text>
+            <Text style={{fontWeight: '800',}}>Discount</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.contentItem}>
             <Ionicons name='pricetags' size={24}/>

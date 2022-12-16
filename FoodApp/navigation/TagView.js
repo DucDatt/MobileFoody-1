@@ -34,6 +34,10 @@ import HomeFood from '../views/Shop/Food/HomeFood';
 import AddFood from '../views/Shop/Food/AddFood';
 import EditFood from '../views/Shop/Food/EditFood';
 
+import HomeDiscount from '../views/Shop/Discount/HomeDiscount';
+import AddDiscount from '../views/Shop/Discount/AddDiscount';
+import EditDiscount from '../views/Shop/Discount/EditDiscount';
+
 const navOptionHandler = () => ({
     headerShown: false
 })
@@ -169,6 +173,9 @@ export default function TagView() {
             <Stack.Screen name="HomeFood" component={HomeFood} options={navOptionHandler} />
             <Stack.Screen name="AddFood" component={AddFood} options={navOptionHandler} />
             <Stack.Screen name="EditFood" component={EditFood} options={navOptionHandler} />
+            <Stack.Screen name="HomeDiscount" component={HomeDiscount} options={navOptionHandler} />
+            <Stack.Screen name="AddDiscount" component={AddDiscount} options={navOptionHandler} />
+            <Stack.Screen name="EditDiscount" component={EditDiscount} options={navOptionHandler} />
         </Stack.Navigator>
     )
 }
