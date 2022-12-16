@@ -23,7 +23,9 @@ import LikeScreen from '../views/Customer/Like/LikeScreen';
 import Introduce from '../views/Customer/Introduce';
 import ShoppingCart from '../views/Customer/FoodCustomer/ShoppingCart';
 import DetailPopUp from '../views/Customer/FoodCustomer/DetailPopUp';
-
+import History from '../views/Customer/FoodCustomer/History';
+import HomeAdmin from '../views/Admin/HomeAdmin';
+import HomeAdminShop from '../views/Shop/HomeAdminShop'
 import HomeCategory from '../views/Admin/Category/HomeCategory';
 import AddCate from '../views/Admin/Category/AddCate';
 import EditCate from '../views/Admin/Category/EditCate';
@@ -67,8 +69,12 @@ function HomeDrawer() {
                 title: "Giới thiệu",
                 drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
             }} />
-            <Drawer.Screen name="HomeCategory" component={HomeCategory} options={{
-                title: "Danh mục",
+            <Drawer.Screen name="HomeAdmin" component={HomeAdmin} options={{
+                title: "Home Admin",
+                drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
+            }} />
+             <Drawer.Screen name="HomeAdminShop" component={HomeAdminShop} options={{
+                title: "Home Admin Shop",
                 drawerIcon: ({ size }) => <Icon name='info' color='#000' size={size} />
             }} />
             <Drawer.Screen name="HomeFood" component={HomeFood} options={{
@@ -111,10 +117,17 @@ function HomeTab() {
                     </View>
                 )
             }} />
+            <Tab.Screen name="History" component={History} options={{
+                tabBarIcon: ({ focused }) => (
+                    <View style={styles.iconView}>
+                        <Ionicons name='receipt-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000' }} />
+                    </View>
+                )
+            }} />
             <Tab.Screen name="Notify" component={NotifyScreen} options={{
                 tabBarIcon: ({ focused }) => (
                     <View style={styles.iconView}>
-                        <Icon name='bell' size={20} style={{ color: focused ? '#1976d2' : '#000' }} />
+                        <Ionicons name='notifications-outline' size={20} color='#000' style={{ color: focused ? '#1976d2' : '#000' }} />
                     </View>
                 )
             }} />
@@ -172,7 +185,7 @@ export default function TagView() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Home" component={Customer} options={navOptionHandler} />
-            <Stack.Screen name="Admin" component={Admin} options={navOptionHandler} />
+            <Stack.Screen name="HomeCategory" component={HomeCategory} options={navOptionHandler} />
             <Stack.Screen name="Shop" component={Shop} options={navOptionHandler} />
             <Stack.Screen name="AddCate" component={AddCate} options={navOptionHandler} />
             <Stack.Screen name="EditCate" component={EditCate} options={navOptionHandler} />
