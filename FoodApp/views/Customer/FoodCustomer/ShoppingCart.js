@@ -1,8 +1,8 @@
-import React from 'react';
-import {  Text, View, StyleSheet, ImageBackground, Modal, Pressable, Image, FlatList } from 'react-native';
-import  IonIcons  from 'react-native-vector-icons/IonIcons';
+import {  Text, View, StyleSheet, Image, FlatList } from 'react-native';
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const items = [
     {
@@ -17,11 +17,7 @@ const items = [
     
 ]
 
-const ShoppingCart = ({
-    navigation,
-}) => { 
-
-    
+const ShoppingCart = ({navigation,}) => { 
     const itemComponent=({item}) => {
         return (
             <LinearGradient style={styles.item} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#FF7867', '#FFDD67']} >
@@ -44,19 +40,19 @@ const ShoppingCart = ({
                         {/* add + minus item */}
                         <View style={styles.addAndMinus}>
                             <TouchableOpacity style={styles.btnMinus}>
-                                <IonIcons name='remove-circle-outline' color={'black'} size={24} />
+                                <Ionicons name='remove-circle-outline' color={'black'} size={24} />
                             </TouchableOpacity>
                             <View style={{justifyContent: 'center', alignItems: 'center', width: '33.3%'}}>
                                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>{item.quantity}</Text>
                             </View>
                             <TouchableOpacity style={styles.btnAdd}>
-                                <IonIcons name='add-circle-outline' color={'black'} size={24} />
+                                <Ionicons name='add-circle-outline' color={'black'} size={24} />
                             </TouchableOpacity>
                         </View>
                     </View>
                     {/* icon delete */}
                     <TouchableOpacity style={styles.iconDelete}>
-                        <IonIcons name='trash-outline' color={'black'} size={24} />
+                        <Ionicons name='trash-outline' color={'black'} size={24} />
                     </TouchableOpacity>
             </LinearGradient>
         )
@@ -70,21 +66,9 @@ const ShoppingCart = ({
                         <View style={styles.titleContent}>
                             <Text style={{color: 'white', fontWeight: 'bold'}}>ĐƠN HÀNG</Text>
                         </View>
-                        <View style={styles.options}>
-                            <TouchableOpacity style={styles.titleOption}>
-                                <Text>Giỏ hàng</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.titleOption}>
-                                <Text>Đang đến</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.titleOption}>
-                                <Text>Lịch sử</Text>
-                            </TouchableOpacity>
-                        </View>
+                        
                     </LinearGradient>
                 </View>
-                
-                    
                 
                 {/* body */}
                 
@@ -108,10 +92,6 @@ const ShoppingCart = ({
     )
 }
     
-    
-    
-    
-
 export default ShoppingCart;
 
 const styles = StyleSheet.create({

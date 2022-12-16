@@ -1,31 +1,30 @@
-import { GETALL_CATEGORY, CREATE_CATEGORY, DELETE_CATEGORY, SEARCH_CATEGORY, UPDATE_CATEGORY } from "../actions/categoryAction";
+import { GETALL_FOOD, SEARCH_FOOD, ADD_FOOD, EDIT_FOOD, DELETE_FOOD } from "../actions/foodAction";
 
 const initialState = {
-    categories: [],
+    foods: [],
 }
-
-export const productReducer = (state = initialState, action) => {
+export const foodReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GETALL_CATEGORY:
+        case GETALL_FOOD:
             return {
                 ...state,
-                categories: [...action.payload]
+                foods: [...action.payload]
             }
-        case SEARCH_CATEGORY:
+        case SEARCH_FOOD:
             return {
                 ...state,
-                categories: [...action.payload],
+                foods: [...action.payload],
 
             };
-        case CREATE_CATEGORY:
+        case ADD_FOOD:
             return {
                 ...state,
-                categories: [...state.categories, action.payload]
+                foods: [...state.foods, action.payload]
             }
-        case UPDATE_CATEGORY:
+        case EDIT_FOOD:
             return {
                 ...state,
-                categories: state.categories.map((x) => {
+                foods: state.foods.map((x) => {
                     if (x.docId === action.payload.docId) {
                         return {
                             ...x,
@@ -36,10 +35,10 @@ export const productReducer = (state = initialState, action) => {
                     }
                 })
             }
-        case DELETE_CATEGORY:
+        case DELETE_FOOD:
             return {
                 ...state,
-                categories: state.categories.filter(x => x.docId !== action.payload.docId),
+                foods: state.foods.filter(x => x.docId !== action.payload.docId),
             }
         default:
             return { ...state };

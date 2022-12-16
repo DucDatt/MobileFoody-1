@@ -1,11 +1,46 @@
-import React from 'react';
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
-import  IonIcons  from 'react-native-vector-icons/IonIcons';
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
 
-
+import { useDispatch, useSelector } from 'react-redux';
+import { postFood } from '../../../redux/actions/accountAction';
 const Register = ({
     navigation,
 }) => {
+    const[email,setEmail]=useState('')
+    const[name,setName]=useState('')
+    const[diaChi,setDiachi]=useState('')
+    const[password,setPassword]=useState('')
+    const auth = getAuth();
+    const db = useSelector(store => store.Account)
+    const dispatch = useDispatch();
+    const regist = () => {
+        let newAcc = {
+            Hoten: name,
+            DiaChi: diaChi,
+            Email:email
+        }
+        dispatch(postFood(newAcc));
+       register();
+    }
+    const register=()=>{
+    createUserWithEmailAndPassword(auth,email,password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        navigation.navigate('Login')
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+
+
+    alert('Vui lòng thử lại')
+  });
+    }
+    
     return (
         <View style={styles.loginContainer}>
             <ImageBackground 
@@ -15,58 +50,44 @@ const Register = ({
 
             >
                 <View style={styles.logoLogin}>
-                    <IonIcons name='person' color='#FFF' size={36}/>
+                    <Ionicons name='person' color='#FFF' size={36}/>
                 </View>
                 <Text style={styles.signinText}>    
                     Đăng ký
                 </Text>
                 <View style={styles.formContainer}>
                     <View style={styles.inputContainer}>
-                        <TextInput placeholder='Họ và tên' style={styles.inputText}/>
+                        <TextInput placeholder='Họ và tên' style={styles.inputText} onChangeText={(text) => {
+                                setName(text)
+                            }}
+                          />
                     </View>
                     <View style={styles.inputContainer}>
-                        <TextInput placeholder='Email' style={styles.inputText}/>
+                        <TextInput onChangeText={(text) => {
+                                setDiachi(text)
+                            }}
+                           placeholder='Địa chỉ' style={styles.inputText}/>
                     </View>
+                    <View style={styles.inputContainer}>
+                        <TextInput placeholder='Email'onChangeText={(text) => {
+                                setEmail(text)
+                            }}
+                           style={styles.inputText}/>
+                    </View>
+
+                   
                     
                     <View style={styles.inputContainer}>
-                        <TextInput placeholder='Mật khẩu' style={styles.inputText}/>
+                        <TextInput placeholder='Mật khẩu' secureTextEntry={true} onChangeText={(text) => {
+                                setPassword(text)
+                            }}
+                          style={styles.inputText}/>
                     </View>
-                    <View style={styles.inputContainer}>
+                    {/* <View style={styles.inputContainer}>
                         <TextInput placeholder='Xác nhận mật khẩu' style={styles.inputText}/>
-                    </View>
-                    <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-                        <View style={{width: '40%',
-                            marginBottom: 10,
-                            backgroundColor: 'white',
-                            borderRadius: 10,
-                            }}>
-                            <TextInput placeholder='Giới tính' style={{
-                                borderBottomWidth: 3,
-                                borderBottomColor: '#d81b60',
-                                paddingVertical:10,
-                                color: '#000',
-                                borderRadius: 10,
-                                paddingLeft: 10,
-                                }}/>
-                        </View>
-                        <View style={{width: '40%',
-                            marginBottom: 10,
-                            backgroundColor: 'white',
-                            borderRadius: 10,
-                            marginLeft: 50,
-                            }}>
-                            <TextInput placeholder='Ngày sinh' style={styles.inputText}/>
-                        </View>
-                    </View>
+                    </View> */}
                     
-                    <View style={styles.inputContainer}>
-                        <TextInput placeholder='Địa chỉ' style={styles.inputText}/>
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <TextInput placeholder='Số điện thoại' style={styles.inputText}/>
-                    </View>
-                    
-                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Login")}>
+                    <TouchableOpacity style={styles.btn} onPress={() => regist()}>
                         <Text style={styles.btnTxt} >Đăng ký</Text>
                     </TouchableOpacity>
                 </View>
