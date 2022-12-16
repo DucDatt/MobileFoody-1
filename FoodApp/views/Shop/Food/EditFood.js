@@ -6,46 +6,46 @@ import React, { useState } from 'react';
 import { firebase } from "../../../Config/firebase";
 import * as ImagePicker from 'expo-image-picker'
 import Ionicons from "react-native-vector-icons/Ionicons"
-import { deleteF, update } from '../../../redux/actions/categoryAction';
+import { updateFOOD,deleteFOOD } from '../../../redux/actions/foodAction';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const EditCate = ({ navigation, route }) => {
+const EditFood = ({ navigation, route }) => {
     const dispatch = useDispatch();
     const db = useSelector((store) => store.products);
 
-    const { cateId } = route.params;
-    const { cateImg } = route.params;
-    const { cateName } = route.params;
-    const { catePrice } = route.params;
-    const { cateDescription } = route.params;
+    const { foodId } = route.params;
+    const { foodImg } = route.params;
+    const { foodName } = route.params;
+    const { foodPrice } = route.params;
+    const { foodDescription } = route.params;
 
-    const { cateDocId } = route.params;
+    const { foodDocId } = route.params;
 
-    const [docId, setdocId] = useState(cateDocId);
+    const [docId, setdocId] = useState(foodDocId);
 
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const [id, setId] = useState('');
+
     const handleUpdate = (docId) => {
-        let newCate = {
-            TenDM: name,
+        let newFood = {
+            TenMA: name,
             MaDM: id,
             Gia: price,
             MoTa: description,
-            HinhDM: selectedImage.localURI,
+            HinhMA: selectedImage.localURI,
         }
 
-        dispatch(update(docId, newCate));
-        navigation.navigate('HomeCategory');
+        dispatch(updateFOOD(docId, newFood));
+        navigation.navigate('HomeFood');
     }
-    const del = (docId) => {
-
-        dispatch(deleteF(docId));
-        navigation.navigate('HomeCategory')
+    const deleteFood = (docId) => {
+        dispatch(deleteFOOD(docId));
+        navigation.navigate('HomeFood')
     }
 
-    const [selectedImage, setSelectedImage] = useState({ localURI: cateImg })
+    const [selectedImage, setSelectedImage] = useState({ localURI: foodImg })
     const openImage = async () => {
         const result = await ImagePicker.launchImageLibraryAsync({ base64: true });
         if (result.cancelled)
@@ -84,7 +84,7 @@ const EditCate = ({ navigation, route }) => {
         let imgname = 'img-android' + new Date().getTime();
         //step2
         let storage = getStorage();
-        let storageRef = ref(storage, `ImageCategory/${imgname}.jpg`);
+        let storageRef = ref(storage, `ImageFood/${imgname}.jpg`);
         let metadata = { contentType: 'image/jpeg' }
 
         const uploadTask = uploadBytesResumable(storageRef, blobFile, metadata);
@@ -103,7 +103,7 @@ const EditCate = ({ navigation, route }) => {
         let imgname = 'img-w-' + new Date().getTime();
         //step2
         let storage = getStorage();
-        let storageRef = ref(storage, `ImageCategory/${imgname}.jpg`);
+        let storageRef = ref(storage, `ImageFood/${imgname}.jpg`);
         let metadata = { contentType: 'image/jpeg' }
         uploadString(storageRef, base64code, 'base64', metadata).then((snapshot) => {
             getDownloadURL(snapshot.ref).then((downloadURL) => {
@@ -133,15 +133,15 @@ const EditCate = ({ navigation, route }) => {
                 </TouchableOpacity>
 
                 <View style={styles.inputContainer}>
-                    <TextInput placeholder={cateId} style={styles.inputText} onChangeText={(val) => setId(val)} />
+                    <TextInput placeholder={foodId}style={styles.inputText} onChangeText={(val) => setId(val)} />
                 </View>
                 <View style={styles.inputContainer}>
-                    <TextInput placeholder={cateName} style={styles.inputText} onChangeText={(val) => setName(val)} />
+                    <TextInput placeholder={foodName} style={styles.inputText} onChangeText={(val) => setName(val)} />
                 </View>
                 <View style={styles.inputContainer}>
-                    <TextInput placeholder={catePrice} style={styles.inputText} onChangeText={(val) => setId(val)} />
+                    <TextInput placeholder={foodPrice} style={styles.inputText} onChangeText={(val) => setPrice(val)} />
                 </View><View style={styles.inputContainer}>
-                    <TextInput placeholder={cateDescription} style={styles.inputText} onChangeText={(val) => setId(val)} />
+                    <TextInput placeholder={foodDescription} style={styles.inputText} onChangeText={(val) => setDescription(val)} />
                 </View>
                 <View style={styles.inputContainer}>
                     <TextInput placeholder='Hình ảnh' style={styles.inputText} value={selectedImage.localURI} />
@@ -149,7 +149,7 @@ const EditCate = ({ navigation, route }) => {
                 <TouchableOpacity style={styles.btn} onPress={() => handleUpdate(docId)}>
                     <Text style={styles.btnTxt} >Sửa món ăn</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} onPress={() => del(docId)}>
+                <TouchableOpacity style={styles.btn} onPress={() => deleteFood(docId)}>
                     <Text style={styles.btnTxt} >Xóa món ăn</Text>
                 </TouchableOpacity>
             </ImageBackground>
@@ -157,7 +157,7 @@ const EditCate = ({ navigation, route }) => {
     );
 }
 
-export default EditCate;
+export default EditFood;
 const styles = StyleSheet.create({
 
     container: {

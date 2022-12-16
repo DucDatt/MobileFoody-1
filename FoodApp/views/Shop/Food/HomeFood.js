@@ -46,9 +46,9 @@ const HomeFood = ({ navigation }) => {
                   console.log('dfgdfg');
                   navigation.navigate('EditFood',
                   {
-                      cateId: item.MaDM, cateImg: item.HinhMA,
-                      cateName: item.TenMA, catePrice: item.Gia, 
-                      cateDescription: item.MoTa , cateDocId: item.docId,
+                      foodId: item.MaDM, foodImg: item.HinhMA,
+                      foodName: item.TenMA, foodPrice: item.Gia, 
+                      foodDescription: item.MoTa , foodDocId: item.docId,
                   })
                 }} >
 
