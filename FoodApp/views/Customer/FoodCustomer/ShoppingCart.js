@@ -66,17 +66,7 @@ const ShoppingCart = ({navigation,}) => {
                         <View style={styles.titleContent}>
                             <Text style={{color: 'white', fontWeight: 'bold'}}>ĐƠN HÀNG</Text>
                         </View>
-                        <View style={styles.options}>
-                            <TouchableOpacity style={styles.titleOption}>
-                                <Text>Giỏ hàng</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.titleOption}>
-                                <Text>Đang đến</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.titleOption}>
-                                <Text>Lịch sử</Text>
-                            </TouchableOpacity>
-                        </View>
+                        
                     </LinearGradient>
                 </View>
                 
