@@ -40,12 +40,10 @@ const HomeCustomer = ({ navigation }) => {
                     <View style={styles.topContent}>
                         <View style={styles.topZone}>
                             <TouchableOpacity style={styles.avatar} onPress={() => { navigation.openDrawer() }}>
-                                <View style={styles.img}>
                                     <Ionicons name='apps-outline'
                                         color='#fff'
                                         size={19}
-                                        style={{ justifyContent: 'center', alignSelf: 'center', paddingTop: 5 }} />
-                                </View>
+                                        />
                             </TouchableOpacity>
                             <Text style={{ fontWeight: '500', fontSize: 20 }}>Home</Text>
                             <TouchableOpacity style={styles.avatar}>
@@ -60,8 +58,9 @@ const HomeCustomer = ({ navigation }) => {
                             <TextInput onChangeText={(Text) => setSearch(Text)} style={styles.searchBar} placeholder='Tìm kiếm' />
                             <TouchableOpacity
                                 onPress={() => handleSeachCate(search)}
+                                style={styles.search}
                             >
-                                <Text style={styles.search}>Tìm kiếm</Text>
+                                <Ionicons name='search-outline' size={24} style={{justifyContent: 'center', alignItems: 'center'}}/>
                             </TouchableOpacity>
                         </View>
 
@@ -132,7 +131,9 @@ const styles = StyleSheet.create({
         height: 36,
         borderRadius: 36 / 2,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: 'black',
+        
     },
     img: {
         width: '100%',
@@ -151,21 +152,25 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 20,
         marginTop: 30,
-        width: '70%',
+        width: '80%',
         height: 40,
         fontSize: 18,
         backgroundColor: '#fff',
         color: '#000',
-        paddingLeft: 15
+        paddingLeft: 15,
     },
     search: {
-        fontSize: 20,
+        width:40,
+        height: 40,
+        fontSize: 10,
         color: 'black',
-        paddingStart: 10,
         backgroundColor: 'white',
         fontWeight: 'bold',
-        marginTop: 35,
+        marginTop: 30,
         borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 10,
     },
     tagContent: {
         flex: 1,
