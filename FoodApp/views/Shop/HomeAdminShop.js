@@ -18,17 +18,21 @@ const HomeAdmin = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <ImageBackground
-        source={{uri: 'https://i.pinimg.com/736x/b1/11/48/b11148e7d90eaf945fbb705f7d3ea1e1.jpg'}}
+        // source={{uri: ''}}
         resizeMode='cover'
         style={styles.bgContainer}
       >
         <View style={styles.bgAdmin}>
-            <Text style={{color: 'yellow',  fontSize: 36}}>System Admin</Text>
+            <Text style={{color: 'yellow',  fontSize: 36}}>Admin Shop</Text>
         </View>
         <View style={styles.contentAdmin}>
-          <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('HomeCategory')}>
-            <Ionicons name='home' size={24}/>
-            <Text style={{fontWeight: '800',}}>Home Category</Text>
+          <TouchableOpacity style={styles.contentItem} onPress={() => navigation.navigate('HomeFood')}>
+            <Ionicons name='add-circle' size={24}/>
+            <Text style={{fontWeight: '800',}}>Food</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.contentItem}>
+            <Ionicons name='create' size={24}/>
+            <Text style={{fontWeight: '800',}}>Update/Delete</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.contentItem}>
             <Ionicons name='pricetags' size={24}/>
@@ -65,6 +69,7 @@ const styles = StyleSheet.create({
   },
   bgContainer: {
     flex: 9,
+    backgroundColor: 'rgba(0,0,0,0.8)'
   },
   bgAdmin: {
     flex: 3,
